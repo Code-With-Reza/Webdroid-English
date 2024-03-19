@@ -1,20 +1,20 @@
 [{
         "icon": "images/LocalNote.png",
-        "name": "备忘录",
+        "name": "Note",
         "url": "apps/LocalNote.html",
         "color1": "#E8EAF6",
         "color2": "#000",
         "textColor": "#000",
-        "description": "由 Burger Studio 开发的 LocalNote"
+        "description": "Developed by Burger Studio - LocalNote"
     },
     {
         "icon": "images/LocalPaint.png",
-        "name": "画册",
+        "name": "Paint",
         "url": "apps/LocalPaint.html",
         "color1": "#E8EAF6",
         "color2": "#000",
         "textColor": "#000",
-        "description": "由 Burger Studio 开发的 LocalPaint"
+        "description": "Developed by Burger Studio - LocalPaint"
     },
     {
         "icon": "images/ToDo.png",
@@ -23,43 +23,43 @@
         "color1": "#E8EAF6",
         "color2": "#000",
         "textColor": "#000",
-        "description": "由 Burger Studio 开发的任务清单，需要 Webdroid 1.8.0 及以上版本。"
+        "description": "To-do list developed by Burger Studio, requires Webdroid 1.8.0 and above."
     },
     {
         "icon": "images/Timetable.png",
-        "name": "课程表",
+        "name": "Class Schedule",
         "url": "apps/Timetable.html",
         "color1": "#E8EAF6",
         "color2": "#000",
         "textColor": "#000",
-        "description": "由 Burger Studio 开发的课程表，需要 Webdroid 1.9.0 及以上版本。"
+        "description": "Curriculum developed by Burger Studio, requires Webdroid 1.9.0 and above."
     },
     {
         "icon": "images/DaysMatter.png",
-        "name": "倒数日",
+        "name": "Countdown",
         "url": "apps/DaysMatter.html",
         "color1": "#E8EAF6",
         "color2": "#000",
         "textColor": "#000",
-        "description": "由 Burger Studio 开发的倒数日，需要 Webdroid 1.10.0 及以上版本。"
+        "description": "Countdown to the Day, developed by Burger Studio, requires Webdroid 1.10.0 and above."
     },
     {
         "icon": "images/Calc.png",
-        "name": "计算器",
+        "name": "Calculator",
         "url": "apps/Calc.html",
         "color1": "#fff",
         "color2": "#000",
         "textColor": "#000",
-        "description": "由 Burger Studio 开发的计算器，需要 Webdroid 1.11.0 及以上版本。"
+        "description": "Calculator developed by Burger Studio, requires Webdroid 1.11.0 and above."
     },
     {
         "icon": "images/LatticeScreen.png",
-        "name": "点阵显示器",
+        "name": "Matrix Display",
         "url": "apps/LatticeScreen/index.html",
         "color1": "#E8EAF6",
         "color2": "#000",
         "textColor": "#000",
-        "description": "由 Burger Studio 开发的点阵显示器，需要 Webdroid 1.12.0 及以上版本。"
+        "description": "Dot matrix display developed by Burger Studio, requires Webdroid 1.12.0 and above."
     },
     {
         "icon": "images/WebDev.png",
@@ -68,25 +68,25 @@
         "color1": "#fff",
         "color2": "#000",
         "textColor": "#000",
-        "description": "由 Burger Studio 开发的 Web 编辑器，需要 Webdroid 2.1.0 及以上版本。"
+        "description": "Web editor developed by Burger Studio, requires Webdroid 2.1.0 and above."
     },
     {
         "icon": "images/NetEaseMusic.png",
-        "name": "网易云音乐",
+        "name": "Music",
         "url": "https://music.163.com/",
         "color1": "#D43C33",
         "color2": "#000",
         "textColor": "#fff",
-        "description": "音乐的力量"
+        "description": "The power of music"
     },
     {
         "icon": "images/bilibili.png",
-        "name": "哔哩哔哩",
+        "name": "Bilibili",
         "url": "https://www.bilibili.com/",
         "color1": "#FB7299",
         "color2": "#000",
         "textColor": "#fff",
-        "description": "弹幕视频网站"
+        "description": "Danmaku video website"
     },
     {
         "icon": "images/Minecraft.png",
@@ -95,7 +95,7 @@
         "color1": "#000",
         "color2": "#000",
         "textColor": "#fff",
-        "description": "MC 网页复刻版"
+        "description": "MC webpage replica"
     },
     {
         "icon": "images/Phigros.png",
@@ -108,20 +108,20 @@
     },
     {
         "icon": "images/WoodBox.png",
-        "name": "一个木函",
+        "name": "Toolbox",
         "url": "https://ol.woobx.cn/",
         "color1": "#FAFAFA",
         "color2": "#000",
         "textColor": "#000",
-        "description": "实用工具集"
+        "description": "Utility toolset"
     },
     {
         "icon": "images/Baidu.png",
-        "name": "百度",
+        "name": "Baidu",
         "url": "https://www.baidu.com/",
         "color1": "#fff",
         "color2": "#000",
         "textColor": "#000",
-        "description": "国内搜索引擎"
+        "description": "Domestic search engine"
     }
 ]
