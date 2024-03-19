@@ -12,11 +12,11 @@
     <img src="images/android-logo-mask.png" style="width: 256px;position: fixed;left: calc(50% - 128px);top: calc(50% - 64px);z-index: 114514;">
     <marquee style="height: 64px;width: 256px;position: fixed;left: calc(50% - 128px);top: calc(50% - 64px);z-index: -114514;background: #fff;" scrollamount="25" direction="right"><img src="images/android-logo-shine.png"></marquee>
     <script>
-        //事件：页面加载完成
+        //Event: Page loading completed
         window.onload = function() {
             getWallpaper();
         };
-        //函数：获取壁纸并跳转到启动器页面
+        //Function: Get the wallpaper and jump to the launcher page
         function getWallpaper() {
             var wallpaperGetting = new XMLHttpRequest();
             wallpaperGetting.onreadystatechange = function() {
