@@ -1,8 +1,8 @@
-//设置当前版本数据
-var versionName = "2.2.0";
+//Set current version data
+var versionName = "3.0.0";
 var versionCode = 231224;
-var buildDate = "2023年12月24日";
-//函数：获取最新版本数据
+var buildDate = "March 19, 2024";
+//Function: Get the latest version data
 function checkUpdate() {
     var getUpdateData = new XMLHttpRequest();
     getUpdateData.onreadystatechange = function() {
@@ -11,6 +11,6 @@ function checkUpdate() {
             processUpdate();
         }
     };
-    getUpdateData.open("GET", "https://bgdroid.netlify.app/version.json", true);
+    getUpdateData.open("GET", "https://raw.githubusercontent.com/Code-With-Reza/Webdroid-English/main/version.json", true);
     getUpdateData.send();
 }
