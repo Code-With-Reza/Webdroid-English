@@ -7,7 +7,7 @@
     <link rel="shortcut icon" href="images/Update.png" type="image/x-icon">
     <link rel="stylesheet" href="mdui-v1.0.1/css/mdui.min.css">
     <script src="mdui-v1.0.1/js/mdui.min.js"></script>
-    <title>系统更新</title>
+    <title>Update</title>
     <style>
         body {
             background: #4B81DA;
@@ -65,23 +65,23 @@
 <body class="mdui-theme-primary-blue mdui-theme-accent-blue">
     <div id="card">
         <i class="mdui-icon material-icons mdui-text-color-theme-accent" style="font-size: 32px;">system_update</i>
-        <p id="title">正在检查更新......</p>
+        <p id="title">Checking for updates...</p>
         <p id="versionName"></p>
         <p id="date"></p>
         <p id="content"></p>
         <br>
         <div id="updateButton">
-            <button class="mdui-btn mdui-ripple mdui-color-theme-accent mdui-float-right" onclick="javascript:update();">更新</button>
+            <button class="mdui-btn mdui-ripple mdui-color-theme-accent mdui-float-right" onclick="javascript:update();">Update</button>
         </div>
         <div id="backButton">
-            <button class="mdui-btn mdui-ripple mdui-color-theme-accent mdui-float-right" onclick="javascript:goBack();">返回</button>
+            <button class="mdui-btn mdui-ripple mdui-color-theme-accent mdui-float-right" onclick="javascript:goBack();">Return</button>
         </div>
         <div id="spinner">
             <div class="mdui-spinner mdui-center"></div>
         </div>
     </div>
     <script>
-        //事件：页面加载完成
+        //Event: Page loading completed
         window.onload = function() {
             var card = document.getElementById("card");
             window.setInterval(function() {
@@ -98,7 +98,7 @@
             });
         };
 
-        //接入 API：执行 JavaScript 脚本
+        //Access API: Execute JavaScript script
         function postScript(script) {
             var scriptStr = script.toString();
             var postData = {
@@ -107,32 +107,32 @@
             };
             window.parent.postMessage(JSON.stringify(postData), "/");
         }
-        //函数：处理更新数据
+        //Function: Process update data
         function processUpdate() {
             document.getElementById("spinner").style = updateData.spinner;
-            document.getElementById("versionName").innerText = "版本名称：" + updateData.versionName;
-            document.getElementById("date").innerText = "更新日期：" + updateData.updateDate;
-            document.getElementById("content").innerHTML = "更新内容：<p>" + updateData.change + "</p>";
-            //判断是否为最新版本
+            document.getElementById("versionName").innerText = "Version Name：" + updateData.versionName;
+            document.getElementById("date").innerText = "Updated Date：" + updateData.updateDate;
+            document.getElementById("content").innerHTML = "Changes：<p>" + updateData.change + "</p>";
+            //Determine whether it is the latest version
             if (versionCode < updateData.versionCode) {
-                document.getElementById("title").innerText = "有可用的系统更新";
+                document.getElementById("title").innerText = "There is a system update available";
                 document.getElementById("updateButton").style.display = "inline-block";
                 document.getElementById("backButton").style.display = "inline-block";
                 document.getElementById("backButton").style.float = "left";
                 document.getElementById("updateButton").style.float = "right";
             } else {
-                document.getElementById("title").innerText = "已是最新版本";
+                document.getElementById("title").innerText = "Already the latest version";
                 document.getElementById("backButton").style.display = "inline-block";
                 document.getElementById("backButton").style.float = "right";
             }
         }
-        //函数：跳转到最新版本下载页面
+        //Function: Jump to the latest version download page
         function update() {
             postScript(function() {
-                window.open("https://www.123pan.com/s/kklDVv-Muubd.html", "_blank");
+                window.open("https://github.com/Code-With-Reza/Webdroid-English", "_blank");
             });
         }
-        //函数：返回
+        //Function: return
         function goBack() {
             postScript(function() {
                 gebi('navBack').click();
