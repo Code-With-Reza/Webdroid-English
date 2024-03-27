@@ -63,30 +63,30 @@
         <div class="mdui-toolbar mdui-color-theme-50">
             <a class="mdui-typo-title">To Do</a>
             <div class="mdui-toolbar-spacer"></div>
-            <a class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: '新建'}" mdui-dialog="{target: '#add'}">
+            <a class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: 'New'}" mdui-dialog="{target: '#add'}">
                 <i class="mdui-icon material-icons">add</i>
             </a>
         </div>
     </div>
     <ul class="mdui-list mdui-center" style="max-width: 640px;" id="list"></ul>
     <div style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -114514;" class="mdui-valign">
-        <div style="width: 100%;text-align: center;" id="none">没有任何 To Do</div>
+        <div style="width: 100%;text-align: center;" id="none">No To Do</div>
     </div>
     <div class="mdui-dialog" id="add">
-        <div class="mdui-dialog-title">添加 To Do</div>
+        <div class="mdui-dialog-title">Add To Do</div>
         <div class="mdui-dialog-content">
             <div class="mdui-textfield mdui-textfield-floating-label">
-                <label class="mdui-textfield-label">To Do 内容</label>
+                <label class="mdui-textfield-label">To Do content</label>
                 <input class="mdui-textfield-input" type="text" id="input" />
             </div>
         </div>
         <div class="mdui-dialog-actions">
-            <button class="mdui-btn mdui-ripple" mdui-dialog-close>取消</button>
-            <button class="mdui-btn mdui-ripple" onclick="javascript:add();" id="addBtn">确认</button>
+            <button class="mdui-btn mdui-ripple" mdui-dialog-close>Cancel</button>
+            <button class="mdui-btn mdui-ripple" onclick="javascript:add();" id="addBtn">Confirm</button>
         </div>
     </div>
     <script>
-        //接入 API：执行 JavaScript 脚本
+        //Access API: Execute JavaScript script
         function postScript(script) {
             var scriptStr = script.toString();
             var postData = {
@@ -95,7 +95,7 @@
             };
             window.parent.postMessage(JSON.stringify(postData), "/");
         }
-        //接入 API：发送 Toast
+        //Access API: Send Toast
         function postToast(message) {
             var postData = {
                 "type": "toast",
@@ -103,7 +103,7 @@
             };
             window.parent.postMessage(JSON.stringify(postData), "/");
         }
-        //获取深色主题设置
+        //Get dark theme settings
         if (localStorage.getItem("darkTheme") == "true") {
             document.body.classList.add("mdui-theme-layout-dark");
             postScript(function() {
@@ -116,7 +116,7 @@
                 gebi("statusBar").style.color = "#000";
             });
         }
-        //事件：页面加载完成
+        //Event: Page loading completed
         window.onload = function() {
             if (localStorage.To_Do) {
                 localStorage.setItem("toDo", localStorage.getItem("To_Do"));
@@ -124,7 +124,7 @@
             }
             freshList();
         };
-        //函数：刷新任务列表
+        //Function: refresh task list
         function freshList() {
             if (localStorage.getItem("toDo") && localStorage.getItem("toDo") != "[]") {
                 document.getElementById("none").style.display = "none";
@@ -146,44 +146,44 @@
                 toDo = [];
             }
         }
-        //函数：添加任务
+        //Function: add task
         function add() {
             if (document.getElementById("input").value == "") {
-                postToast("请填写内容");
+                postToast("Please fill in the content");
             } else {
                 toDo.push([document.getElementById("input").value, 0]);
                 localStorage.setItem("toDo", JSON.stringify(toDo));
                 document.getElementsByClassName("mdui-overlay")[0].click();
-                postToast("已添加 To Do");
+                postToast("To Do has been added");
                 freshList();
             }
         }
-        //函数：切换任务状态
+        //Function: switch task status
         function switchStatus(index) {
             if (toDo[index][1] == 0) {
                 toDo[index][1] = 1;
                 document.getElementById("event_" + index).classList.add("done");
-                postToast("已标记为完成");
+                postToast("Marked as complete");
             } else {
                 toDo[index][1] = 0;
                 document.getElementById("event_" + index).classList.remove("done");
-                postToast("已标记为未完成");
+                postToast("marked is not completed");
             }
             localStorage.setItem("toDo", JSON.stringify(toDo));
         }
-        //事件：对话框打开完成
+        //Event: Dialog opening completed
         document.getElementById("add").addEventListener("opened.mdui.dialog", function() {
             document.getElementById("input").value = "";
             document.getElementById("input").focus();
         });
-        //事件：在文本框中按下回车键
+        //Event: Press the Enter key in the text box
         document.getElementById("input").addEventListener("keyup", function(event) {
             event.preventDefault();
             if (event.keyCode === 13) {
                 document.getElementById("addBtn").click();
             }
         });
-        //函数：复制文本
+        //Function: copy text
         function copyHandle(content) {
             let copy = (e) => {
                 e.preventDefault()
@@ -193,35 +193,35 @@
             document.addEventListener('copy', copy)
             document.execCommand("Copy");
         }
-        //以下为实验性功能
+        //The following are experimental features
         function test() {
-            return "实验性功能：\n1. 导出全部 To Do：exportToDo()\n2. 导入 To Do（覆盖现有）：importToDo(数据内容)\n3. 移除指定 To Do：removeToDo(index)\n（index 为欲移除 To Do 的序号，从 0 开始计算。）\n4. 清除全部 To Do：clearToDo()";
+            return "Experimental function:\n1. Export all To Do: exportToDo()\n2. Import To Do (overwrite existing): importToDo(data content)\n3. Remove specified To Do: removeToDo(index)\n( index is the serial number of the To Do to be removed, counting from 0.)\n4. Clear all To Do: clearToDo()";
         }
 
         function exportToDo() {
             copyHandle(JSON.stringify(toDo));
             console.log(JSON.stringify(toDo));
-            return "已复制到剪贴板";
+            return "Copied to clipboard";
         }
 
         function importToDo(data) {
             if (data == undefined) {
-                return "缺失数据内容";
+                return "Missing data content";
             } else {
                 localStorage.setItem("toDo", JSON.stringify(data));
                 freshList();
-                return "已导入 To Do";
+                return "Imported To Do";
             }
         }
 
         function removeToDo(index) {
             if (index == undefined) {
-                return "缺失欲移除 To Do 的序号";
+                return "The sequence number of the To Do to be removed is missing";
             } else {
                 toDo.splice(index, 1);
                 localStorage.setItem("toDo", JSON.stringify(toDo));
                 freshList();
-                return "已移除该 To Do";
+                return "The To Do has been removed";
             }
         }
 
@@ -229,7 +229,7 @@
             toDo = [];
             localStorage.setItem("toDo", JSON.stringify(toDo));
             freshList();
-            return "已清除全部 To Do";
+            return "All To Do cleared";
         }
     </script>
 </body>

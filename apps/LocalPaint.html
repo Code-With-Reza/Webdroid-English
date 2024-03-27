@@ -7,7 +7,7 @@
     <script src="../mdui-v1.0.1/js/mdui.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../waves/waves.min.css" />
     <link rel="shortcut icon" href="../images/LocalPaint.png" type="image/x-icon">
-    <title>画册</title>
+    <title>Paint</title>
     <style>
         .mdui-theme-layout-dark .waves-ripple {
             background: rgba(255, 255, 255, .4) !important;
@@ -137,15 +137,15 @@
             <a class="mdui-btn mdui-btn-icon waves-block" mdui-drawer="{target: '#drawer', swipe: true}">
                 <i class="mdui-icon material-icons">menu</i>
             </a>
-            <a class="mdui-typo-title">画册</a>
+            <a class="mdui-typo-title">Picture album</a>
             <div class="mdui-toolbar-spacer"></div>
-            <a class="mdui-btn mdui-btn-icon waves-block" mdui-tooltip="{content: '删除'}" style="display: none;" id="delete" mdui-dialog="{target: '#deleting'}">
+            <a class="mdui-btn mdui-btn-icon waves-block" mdui-tooltip="{content: 'Delete'}" style="display: none;" id="delete" mdui-dialog="{target : '#deleting'}">
                 <i class="mdui-icon material-icons">delete</i>
             </a>
-            <a class="mdui-btn mdui-btn-icon waves-block" mdui-tooltip="{content: '星标'}" style="display: none;" id="star">
+            <a class="mdui-btn mdui-btn-icon waves-block" mdui-tooltip="{content: 'star'}" style="display: none;" id="star">
                 <i class="mdui-icon material-icons" id="starIcon" onclick="javascript:starPaint();">star_border</i>
             </a>
-            <a class="mdui-btn mdui-btn-icon waves-block" mdui-tooltip="{content: '新建'}" onclick="javascript:newPaint();">
+            <a class="mdui-btn mdui-btn-icon waves-block" mdui-tooltip="{content: 'New'}" onclick="javascript:newPaint();">
                 <i class="mdui-icon material-icons">add</i>
             </a>
         </div>
@@ -153,26 +153,26 @@
     <div class="mdui-drawer mdui-color-theme-50 mdui-shadow-3" id="drawer" style="transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);">
         <ul class="mdui-list" id="paintList" style="width: 100%;"></ul>
         <div id="guide" style="width: 100%;text-align: center;">
-            <div class="mdui-typo-body-2 mdui-text-center mdui-m-b-1">没有可显示的内容</div>
-            <button class="mdui-btn waves-block mdui-color-theme-accent mdui-valign mdui-center" onclick="javascript:newPaint();" style="margin: 12px;">新建画布</button>
+            <div class="mdui-typo-body-2 mdui-text-center mdui-m-b-1">No content to display</div>
+            <button class="mdui-btn waves-block mdui-color-theme-accent mdui-valign mdui-center" onclick="javascript:newPaint();" style="margin: 12px;">New canvas</button>
         </div>
     </div>
-    <div id="choose"><button class="mdui-btn waves-block mdui-color-theme-accent mdui-center mdui-valign" style="margin: 16px;" onclick="javascript:new mdui.Drawer('#drawer', {swipe: true}).open();">选择一张画布</button></div>
+    <div id="choose"><button class="mdui-btn waves-block mdui-color-theme-accent mdui-center mdui-valign" style="margin: 16px;" onclick="javascript:new mdui.Drawer ('#drawer', {swipe: true}).open();">Select a canvas</button></div>
     <form class="mdui-center mdui-color-theme-50" style="padding: 16px;max-width: 640px;" onsubmit="return false;">
         <div class="mdui-textfield">
-            <label class="mdui-textfield-label">标题</label>
+            <label class="mdui-textfield-label">Title</label>
             <input class="mdui-textfield-input" type="text" id="title" />
         </div>
         <div class="mdui-panel" mdui-panel style="margin-bottom: 8px;">
             <div class="mdui-panel-item mdui-color-theme-100 mdui-shadow-0">
                 <div class="mdui-panel-item-header">
-                    <div class="mdui-panel-item-title">画笔设置</div>
+                    <div class="mdui-panel-item-title">Brush settings</div>
                     <i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
                 </div>
                 <div class="mdui-panel-item-body">
                     <div class="mdui-textfield" style="padding: 16px;">
                         <label class="mdui-textfield-label">
-                            <div style="width: 16px;height: 16px;border-radius: 16px;display: inline;margin-right: 8px;color: rgba(0, 0, 0, 0);" id="colorPreview">00</div>画笔颜色（RGBA）
+                            <div style="width: 16px;height: 16px;border-radius: 16px;display: inline;margin-right: 8px;color: rgba(0, 0, 0, 0);" id="colorPreview">00 </div>Brush color (RGBA)
                         </label>
                         <label class="mdui-slider mdui-slider-discrete">
                             <input type="range" step="1" min="0" max="255" id="r" value="0" />
@@ -188,7 +188,7 @@
                         </label>
                     </div>
                     <div class="mdui-textfield" style="padding: 16px;">
-                        <label class="mdui-textfield-label">画笔大小</label>
+                        <label class="mdui-textfield-label">Brush size</label>
                         <label class="mdui-slider mdui-slider-discrete">
                             <input type="range" step="1" min="1" max="100" id="size" value="1" />
                         </label>
@@ -199,27 +199,27 @@
         </div>
         <canvas id="canvas" style="width: 100%;border: 1px dashed rgba(128,128,128,0.5);"></canvas>
         <div class="mdui-textfield">
-            <label class="mdui-textfield-label">修改日期</label>
+            <label class="mdui-textfield-label">Modification date</label>
             <input class="mdui-textfield-input" type="text" id="date" disabled />
         </div>
     </form>
-    <button class="mdui-btn waves-block mdui-color-theme-accent mdui-center mdui-valign" onclick="javascript:savePaint();" id="save" disabled="disabled" style="padding: 20px 32px;margin-top: 16px;">保存</button>
-    <button class="mdui-btn waves-block mdui-color-theme-accent mdui-center mdui-valign" id="download" style="padding: 20px 32px;margin-top: 16px;"><a id="downloadBtn" onclick="javascript:downloadPaint();" style="color: white;text-decoration: none;">下载</a></button>
+    <button class="mdui-btn waves-block mdui-color-theme-accent mdui-center mdui-valign" onclick="javascript:savePaint();" id="save" disabled="disabled" style="padding: 20px 32px;margin-top: 16px;">Save</button>
+    <button class="mdui-btn waves-block mdui-color-theme-accent mdui-center mdui-valign" id="download" style="padding: 20px 32px;margin-top: 16px;"><a id= "downloadBtn" onclick="javascript:downloadPaint();" style="color: white;text-decoration: none;">Download</a></button>
     <div class="mdui-dialog mdui-color-theme-50" id="deleting">
-        <div class="mdui-dialog-title">删除此画布？</div>
-        <div class="mdui-dialog-content">这将使你丢失它的全部数据。</div>
+        <div class="mdui-dialog-title">Delete this canvas? </div>
+        <div class="mdui-dialog-content">This will cause you to lose all its data. </div>
         <div class="mdui-dialog-actions">
-            <button class="mdui-btn waves-classic" mdui-dialog-close>取消</button>
-            <button class="mdui-btn waves-classic" onclick="javascript:deletePaint();" mdui-dialog-close>确定</button>
+            <button class="mdui-btn waves-classic" mdui-dialog-close>Cancel</button>
+            <button class="mdui-btn waves-classic" onclick="javascript:deletePaint();" mdui-dialog-close>OK</button>
         </div>
     </div>
     <div class="mdui-dialog mdui-color-theme-50" id="saveOrNot">
-        <div class="mdui-dialog-title">如何处理更改？</div>
-        <div class="mdui-dialog-content">当前画布内容已被更改，但未保存。</div>
+        <div class="mdui-dialog-title">How to handle changes? </div>
+        <div class="mdui-dialog-content">The current canvas content has been changed but not saved. </div>
         <div class="mdui-dialog-actions">
-            <button class="mdui-btn waves-classic" onclick="javascript:change('save')" mdui-dialog-close>保存</button>
-            <button class="mdui-btn waves-classic" onclick="javascript:change('doNotSave');" mdui-dialog-close>不保存</button>
-            <button class="mdui-btn waves-classic" mdui-dialog-close>取消</button>
+            <button class="mdui-btn waves-classic" onclick="javascript:change('save')" mdui-dialog-close>Save</button>
+            <button class="mdui-btn waves-classic" onclick="javascript:change('doNotSave');" mdui-dialog-close>Do not save</button>
+            <button class="mdui-btn waves-classic" mdui-dialog-close>Cancel</button>
         </div>
     </div>
     <img id="img" style="display: none;">
@@ -261,7 +261,7 @@
             }
             showButtons1();
             showButtons2();
-            localStorage.setItem("paintTitle" + localStorage.getItem("paints"), "画布 " + Number(Number(localStorage.getItem("paints")) + 1));
+            localStorage.setItem("paintTitle" + localStorage.getItem("paints"), "Canvas " + Number(Number(localStorage.getItem("paints")) + 1));
             localStorage.setItem("paintContent" + localStorage.getItem("paints"), "");
             localStorage.setItem("paintStarred" + localStorage.getItem("paints"), "false");
             localStorage.setItem("paintDeleted" + localStorage.getItem("paints"), "false");
@@ -345,7 +345,7 @@
             localStorage.setItem("paintContent" + editing, canvas.toDataURL("image/png"));
             getNowDate();
             localStorage.setItem("paintDate" + editing, formattedDate);
-            postToast("已保存");
+            postToast("Saved");
             saved = 1;
             loadPaints();
             editPaint();
@@ -355,11 +355,11 @@
         function starPaint() {
             if (localStorage.getItem("paintStarred" + editing) == "true") {
                 localStorage.setItem("paintStarred" + editing, "false");
-                postToast("已取消星标");
+                postToast("The star has been cancelled");
                 starIcon.innerHTML = "star_border";
             } else {
                 localStorage.setItem("paintStarred" + editing, "true");
-                postToast("已设为星标");
+                postToast("Has been set as a star");
                 starIcon.innerHTML = "star";
             }
             loadPaints();
@@ -371,7 +371,7 @@
             localStorage.removeItem("paintStarred" + editing);
             localStorage.setItem("paintDeleted" + editing, "true");
             localStorage.removeItem("paintDate" + editing);
-            postToast("已删除");
+            postToast("Deleted");
             loadPaints();
             hideButtons2();
             editing = "";
@@ -406,7 +406,7 @@
         }
 
 
-        //获取深色主题设置
+        //Get dark theme settings
         if (localStorage.getItem("darkTheme") == "true") {
             document.body.classList.add("mdui-theme-layout-dark");
             postScript(function() {
@@ -476,7 +476,7 @@
                 editPaint();
             }
         }
-        // 以下有关 Canvas 的代码来自 IDEA-129
+        // The following code about Canvas comes from IDEA-129
         window.onload = function() {
             initCanvas();
             resizeCanvas();
@@ -580,7 +580,7 @@
             downloadBtn.download = localStorage.getItem("paintTitle" + editing) + ".png";
             downloadBtn.href = canvas.toDataURL();
         }
-        //接入 API：发送 Toast
+        //Access API: Send Toast
         function postToast(message) {
             var postData = {
                 "type": "toast",
@@ -588,7 +588,7 @@
             };
             window.parent.postMessage(JSON.stringify(postData), "*");
         }
-        //接入 API：执行 JavaScript 脚本
+        //Access API: Execute JavaScript script
         function postScript(script) {
             var scriptStr = script.toString();
             var postData = {

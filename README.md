@@ -1,2 +1,2 @@
-# Webdroid
-用 Web 前端还原 Android 交互界面。
+#Webdroid
+Restore Android interactive interface with web front-end.

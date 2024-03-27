@@ -85,7 +85,7 @@
         </div>
     </div>
     <script>
-        //接入 API：切换活动
+        //Access API: Switch activities
         function switchActivity(url, back = false) {
             var postData = {
                 "type": "switchActivity",
@@ -94,7 +94,7 @@
             };
             window.parent.postMessage(JSON.stringify(postData), "/");
         }
-        //接入 API：执行 JavaScript 脚本
+        //Access API: Execute JavaScript script
         function postScript(script) {
             var scriptStr = script.toString();
             var postData = {
@@ -103,7 +103,7 @@
             };
             window.parent.postMessage(JSON.stringify(postData), "/");
         }
-        //获取深色主题设置
+        //Get dark theme settings
         if (localStorage.getItem("darkTheme") == "true") {
             document.body.classList.add("mdui-theme-layout-dark");
             postScript(function() {

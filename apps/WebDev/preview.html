@@ -7,7 +7,7 @@
     <link rel="shortcut icon" href="../../images/WebDev.png" type="image/x-icon">
     <link rel="stylesheet" href="../../mdui-v1.0.1/css/mdui.min.css">
     <script src="../../mdui-v1.0.1/js/mdui.min.js"></script>
-    <title>预览页面</title>
+    <title>Preview page</title>
     <style>
         #iframe {
             position: fixed;
@@ -32,22 +32,22 @@
             <a class="mdui-btn mdui-btn-icon mdui-ripple" onclick="javascript:postScript(function (){ gebi('navBack').click(); });">
                 <i class="mdui-icon material-icons">arrow_back</i>
             </a>
-            <a class="mdui-typo-title" id="title">正在载入......</a>
+            <a class="mdui-typo-title" id="title">Loading...</a>
             <div class="mdui-toolbar-spacer"></div>
-            <a class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: '后退'}" id="backBtn">
+            <a class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: 'Back'}" id="backBtn">
                 <i class="mdui-icon material-icons">arrow_back</i>
             </a>
-            <a class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: '前进'}" id="forwardBtn">
+            <a class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: 'Forward'}" id="forwardBtn">
                 <i class="mdui-icon material-icons">arrow_forward</i>
             </a>
-            <a class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: '调试'}" onclick="javascript:erudaInit(0);">
+            <a class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: 'Debug'}" onclick="javascript:erudaInit(0);">
                 <i class="mdui-icon material-icons">build</i>
             </a>
         </div>
     </div>
     <iframe id="iframe"></iframe>
     <script>
-        //接入 API：执行 JavaScript 脚本
+        //Access API: Execute JavaScript script
         function postScript(script) {
             var scriptStr = script.toString();
             var postData = {
@@ -56,7 +56,7 @@
             };
             window.parent.postMessage(JSON.stringify(postData), "/");
         }
-        //获取深色主题设置
+        //Get dark theme settings
         if (localStorage.getItem("darkTheme") == "true") {
             document.body.classList.add("mdui-theme-layout-dark");
             postScript(function() {
@@ -69,7 +69,7 @@
                 gebi("statusBar").style.color = "#000";
             });
         }
-        //接入 API：发送 Toast
+        //Access API: Send Toast
         function postToast(message) {
             var postData = {
                 "type": "toast",
@@ -77,7 +77,7 @@
             };
             window.parent.postMessage(JSON.stringify(postData), "/");
         }
-        //事件：页面加载完成
+        //Event: Page loading completed
         window.onload = function() {
             document.getElementById("iframe").contentWindow.document.documentElement.innerHTML = JSON.parse(localStorage.getItem("webPages"))[sessionStorage.getItem("editingWebPage")][1];
             window.setInterval(function() {
@@ -89,22 +89,22 @@
             }
             erudaInit();
         };
-        //函数：载入调试面板
+        //Function: load debugging panel
         function erudaInit(auto = 1) {
-            document.getElementById("iframe").src = `javascript:(function () { var script = document.createElement('script'); script.src="https://cdn.jsdelivr.net/npm/eruda"; document.body.append(script); script.onload = function () { eruda.init(); } })();`;
+            document.getElementById("iframe").src = `javascript:(function () { var script = document.createElement('script'); script.src="https://cdn.jsdelivr.net/npm/eruda" ; document.body.append(script); script.onload = function () { eruda.init(); } })();`;
             if (auto == 0) {
-                postToast("正在载入调试面板......");
+                postToast("Loading debugging panel...");
             }
         }
-        //事件：后退按钮被点击
+        //Event: Back button is clicked
         document.getElementById("backBtn").onclick = function() {
             document.getElementById("iframe").contentWindow.history.back();
         };
-        //事件：前进按钮被点击
+        //Event: Forward button is clicked
         document.getElementById("forwardBtn").onclick = function() {
             document.getElementById("iframe").contentWindow.history.forward();
         };
-    </script>
+     </script>
 </body>
 
 </html>

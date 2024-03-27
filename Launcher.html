@@ -277,25 +277,25 @@
         <div class="mdui-row-xs-4" style="overflow: scroll;" id="appList">
             <div class="mdui-col icon" onclick="javascript:launchApp('images/Settings.png', 'Settings.html', '#ECEFF1', '#000', '#000');">
                 <img src="images/Settings.png">
-                <p>设置</p>
+                <p>Settings</p>
             </div>
             <div class="mdui-col icon" onclick="javascript:launchApp('images/Contacts.png', 'Contacts.html', '#E3F2FD', '#000', '#000');">
                 <img src="images/Contacts.png">
-                <p>通讯录</p>
+                <p>Address Book</p>
             </div>
             <div class="mdui-col icon" onclick="javascript:launchApp('images/Files.png', 'Files.html', '#ECEFF1', '#000', '#000');">
                 <img src="images/Files.png">
-                <p>文件</p>
+                <p>Documents</p>
             </div>
             <div class="mdui-col icon" onclick="javascript:launchApp('images/AppStore.png', 'AppStore.html', '#E8EAF6', '#000', '#000');">
                 <img src="images/AppStore.png">
-                <p>应用商店</p>
+                <p>App Store</p>
             </div>
-            <div class="mdui-col icon" onclick="javascript:launchApp('images/Bing.png', 'https://www.bing.com/', '#000', '#000', '#fff');">
+            <div class="mdui-col icon" onclick="javascript:launchApp('images/Bing.png', 'https://www.bing.com/', '#000', '#000', '# fff');">
                 <img src="images/Bing.png">
                 <p>Bing</p>
             </div>
-            <div class="mdui-col icon" onclick="javascript:launchApp('images/BGTool.jpg', 'https://www.bgtool.tk/', '#ECEFF1', '#000', '#000');">
+            <div class="mdui-col icon" onclick="javascript:launchApp('images/BGTool.jpg', 'https://www.bgtool.tk/', '#ECEFF1', '#000', '# 000');">
                 <img src="images/BGTool.jpg">
                 <p>BGTool</p>
             </div>
@@ -310,10 +310,10 @@
             <img id="installerIcon" style="display: inline-block;width: 32px;height: 32px;border-radius: 8px;vertical-align: middle;">
             <div id="installerName" style="display: inline-block;vertical-align: middle;margin-left: 4px;"></div>
         </div>
-        <div class="mdui-dialog-content">要添加此应用吗？</div>
-        <div class="mdui-dialog-actions">
-            <button class="mdui-btn mdui-ripple mdui-text-color-blue-accent" mdui-dialog-close>取消</button>
-            <button class="mdui-btn mdui-ripple mdui-text-color-blue-accent" id="installerContinue" mdui-dialog-close>添加</button>
+        <div class="mdui-dialog-content">Add this app? </div>
+         <div class="mdui-dialog-actions">
+             <button class="mdui-btn mdui-ripple mdui-text-color-blue-accent" mdui-dialog-close>Cancel</button>
+             <button class="mdui-btn mdui-ripple mdui-text-color-blue-accent" id="installerContinue" mdui-dialog-close>Add</button>
         </div>
     </div>
     <div class="mdui-dialog" id="appUninstaller">
@@ -321,35 +321,35 @@
             <img id="uninstallerIcon" style="display: inline-block;width: 32px;height: 32px;border-radius: 8px;vertical-align: middle;">
             <div id="uninstallerName" style="display: inline-block;vertical-align: middle;margin-left: 4px;"></div>
         </div>
-        <div class="mdui-dialog-content">要移除此应用吗？</div>
+        <div class="mdui-dialog-content">Do you want to remove this app? </div>
         <div class="mdui-dialog-actions">
-            <button class="mdui-btn mdui-ripple mdui-text-color-blue-accent" mdui-dialog-close>取消</button>
-            <button class="mdui-btn mdui-ripple mdui-text-color-blue-accent" id="uninstallerContinue" mdui-dialog-close>移除</button>
+            <button class="mdui-btn mdui-ripple mdui-text-color-blue-accent" mdui-dialog-close>Cancel</button>
+            <button class="mdui-btn mdui-ripple mdui-text-color-blue-accent" id="uninstallerContinue" mdui-dialog-close>Remove</button>
         </div>
     </div>
     <script>
-        //设置默认 iframe
+        //Set the default iframe
         currentIframe = gebi("iframe_A");
-        //设置应用打开状态
+        //Set the application open status
         opened = 0;
-        //设置历史记录相关数据
+        //Set history related data
         keepHistory = 1;
         switchedApp = 0;
         recent = [];
-        //函数：通过 ID 获取元素
+        //Function: Get elements by ID
         function gebi(id) {
             return document.getElementById(id);
         }
-        //事件：页面加载完成
+        //Event: Page loading completed
         window.onload = function() {
-            //延时执行：显示状态栏与导航栏
+            //Delayed execution: display status bar and navigation bar
             window.setTimeout(function() {
                 gebi("statusBar").style.transform = "translateY(0)";
                 gebi("navBar").style.transform = "translateY(0)";
-            }, 500);
-            //重复执行：
+             }, 500);
+             // Repeat execution:
             window.setInterval(function() {
-                //刷新时间
+                //refresh time
                 var d = new Date();
                 var h = d.getHours().toString().padStart(2, '0');
                 var m = d.getMinutes().toString().padStart(2, '0');
@@ -359,7 +359,7 @@
                 } else {
                     gebi("time").innerText = h + ":" + m;
                 }
-                //刷新深色主题
+                //Refresh dark theme
                 if (localStorage.getItem("darkTheme") == "true") {
                     gebi("iframe_A").style.background = "#303030";
                     gebi("iframe_B").style.background = "#303030";
@@ -372,7 +372,7 @@
                     document.body.classList.remove("mdui-theme-layout-dark");
                 }
             }, 100);
-            //获取设置数据与基本信息
+            //Get setup data and basic information
             getBatteryInfo();
             getBrightness();
             getWallpaper();
@@ -391,12 +391,12 @@
                 gebi("WLANIcon").style.display = "inline-block";
             } else {
                 gebi("WLANIcon").style.display = "none";
-                notice(`<i class="mdui-list-item-avatar mdui-icon material-icons mdui-color-blue-grey mdui-text-color-white">signal_wifi_off</i>`, "网络连接已断开", "当前处于离线状态", `function() {
-                    alert("联网功能暂不可用。\\n请检查您的网络连接。");
-                }`);
+                notice(`<i class="mdui-list-item-avatar mdui-icon material-icons mdui-color-blue-grey mdui-text-color-white">signal_wifi_off</i>`, "The network connection has been disconnected", "Currently offline", `function() {
+                     alert("The networking function is temporarily unavailable.\\nPlease check your network connection.");
+                 }`);
             }
         };
-        //函数：启动应用
+        //Function: start application
         function launchApp(icon, url, color1, color2, textColor) {
             gebi("iframe_A").style.transitionDuration = "0s";
             gebi("iframe_A").style.opacity = 0;
@@ -428,7 +428,7 @@
             opened = 1;
             getDevTools();
         }
-        //事件：主页键被点击
+        //Event: Home button clicked
         gebi("navHome").onclick = function() {
             gebi("iframe_A").style.transform = "translateY(calc(100% + 48px))";
             gebi("iframe_B").style.transform = "translateY(calc(100% + 48px))";
@@ -446,7 +446,7 @@
             recent = [];
             getDevTools();
         };
-        //事件：返回键被点击
+        //Event: The return key is clicked
         gebi("navBack").onclick = function() {
             if (opened == 1) {
                 if (recent[recent.length - 2] == undefined) {
@@ -462,7 +462,7 @@
                 }
             }
         };
-        //事件：iframe 加载完成
+        //Event: iframe loading completed
         gebi("iframe_A").onload = function() {
             if (this.contentWindow.document.title != "" && currentIframe == this) {
                 document.title = this.contentWindow.document.title;
@@ -489,27 +489,27 @@
                 }
             }
         };
-        //函数：发送 Toast
+        //Function: send Toast
         function toast(message) {
-            //若已有 Toast 在显示，则将它们隐藏
+            //If there are already Toasts displayed, hide them
             for (i = 0; i < document.getElementsByClassName("toast").length; i++) {
                 document.getElementsByClassName("toast")[i].style.display = "none";
             }
-            //创建 Toast 元素并显示
+            //Create Toast element and display it
             var toastDiv = document.createElement("div");
             toastDiv.innerText = message;
             toastDiv.classList.add("toast", "mdui-shadow-6");
             document.body.appendChild(toastDiv);
-            //将所有 Toast 居中显示
+            //Center all Toasts
             for (i = 0; i < document.getElementsByClassName("toast").length; i++) {
                 document.getElementsByClassName("toast")[i].style.left = "calc(50% - " + Number(document.getElementsByClassName("toast")[i].clientWidth / 2) + "px)";
             }
-            //延时执行：隐藏 Toast 元素
+            //Delayed execution: hide Toast element
             window.setTimeout(function() {
                 document.body.removeChild(toastDiv);
             }, 5000);
         }
-        //函数：发送通知，实现方法与 Toast 类似
+        //Function: Send notification, the implementation method is similar to Toast
         function notice(icon, title, content, clickFunc) {
             for (i = 0; i < document.getElementsByClassName("notification").length; i++) {
                 document.getElementsByClassName("notification")[i].style.display = "none";
@@ -520,7 +520,7 @@
             <div class="mdui-list-item-text">` + content + `</div>
             </div>`;
             notificationDiv.classList.add("notification", "mdui-shadow-9", "mdui-ripple", "mdui-list-item");
-            //设置通知回调
+            //Set notification callback
             notificationDiv.onclick = function() {
                 eval('(' + clickFunc + ')();');
                 for (i = 0; i < document.getElementsByClassName("notification").length; i++) {
@@ -535,64 +535,64 @@
                 document.body.removeChild(notificationDiv);
             }, 7000);
         }
-        //事件：收到来自其他页面的消息
+        //Event: Message received from other pages
         window.addEventListener("message", function(e) {
             if (e.data == "") return;
             var getData = JSON.parse(e.data);
             switch (getData.type) {
-                //API：发送 Toast
+                //API: send Toast
                 case "toast":
                     if (localStorage.getItem("API_postToast") == 1) {
                         toast(getData.message);
                     }
                     break;
-                    //API：发送通知
+                    //API: send notification
                 case "notification":
                     if (localStorage.getItem("API_postNotification") == 1) {
                         notice(getData.icon, getData.title, getData.content, getData.clickFunc);
                     }
                     break;
-                    //API：执行 JavaScript 脚本
+                    //API: execute JavaScript script
                 case "JavaScript":
                     if (localStorage.getItem("API_postScript") == 1) {
                         eval('(' + getData.script + ')();');
                     }
                     break;
-                    //API：切换应用
+                    //API: switch applications
                 case "switchApp":
                     if (localStorage.getItem("API_switchApp") == 1) {
                         switchApp(getData.url, getData.color1, getData.color2, getData.textColor, getData.back);
                     }
                     break;
-                    //API：切换活动
+                    //API: switch activity
                 case "switchActivity":
                     if (localStorage.getItem("API_switchActivity") == 1) {
                         switchActivity(getData.url, getData.back);
                     }
                     break;
-                    //API：添加应用
+                    //API: add application
                 case "addApp":
                     if (localStorage.getItem("API_addApp") == 1) {
                         addApp(getData.icon, getData.name, getData.url, getData.color1, getData.color2, getData.textColor);
                     }
                     break;
-                    //API：移除应用
+                    //API：Remove app
                 case "removeApp":
                     if (localStorage.getItem("API_removeApp") == 1) {
                         removeApp(getData.index);
                     }
             }
         }, false);
-        //事件：屏幕方向改变
+        //Event: screen orientation changed
         window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", function() {
-            /*隐藏所有通知
-            经过测试，如果这里对通知重新进行定位，在某些设备上就会表现异常
-            有时间我会寻找其他方法来代替*/
+            /*Hide all notifications
+            After testing, if the notification is repositioned here, it will behave abnormally on some devices.
+            When I have time I will look for other methods instead*/
             for (i = 0; i < document.getElementsByClassName("notification").length; i++) {
                 document.getElementsByClassName("notification")[i].style.display = "none";
             }
         }, false);
-        //自动处理某些设置项
+        //Automatically handle certain settings
         if (!localStorage.getItem("displaySeconds")) {
             localStorage.setItem("displaySeconds", 0);
         }
@@ -626,41 +626,41 @@
         if (!localStorage.getItem("displayDevTools")) {
             localStorage.setItem("displayDevTools", 0);
         }
-        //API 控制设置
+        //API Control settings
         APIs = ["API_postToast", "API_postNotification", "API_postScript", "API_switchApp", "API_switchActivity", "API_addApp", "API_removeApp"];
         APIs.forEach(function(item) {
             if (!localStorage.getItem(item)) {
                 localStorage.setItem(item, 1);
             }
         });
-        //设置是否已提示“电池电量不足”
+        //Set whether the prompt "Battery power is low" has been prompted
         batteryAlerted = 0;
-        //函数：获取电池信息
+        //Function: Get battery information
         function getBatteryInfo() {
             navigator.getBattery().then(function(battery) {
                 if (battery.charging) {
-                    //情况 1：正在充电
+                    //Case 1: Charging
                     gebi("batteryIcon").innerText = "battery_charging_full";
                     gebi("batteryIcon").classList.remove("mdui-text-color-red");
                     batteryAlerted = 0;
                 } else {
                     if (battery.level <= 0.2) {
-                        //情况 2：未在充电且电池电量不高于 20%
+                        //Case 2: Not charging and the battery power is not higher than 20%
                         gebi("batteryIcon").innerText = "battery_alert";
                         gebi("batteryIcon").classList.add("mdui-text-color-red");
                         if (batteryAlerted == 0) {
-                            notice(`<i class="mdui-list-item-avatar mdui-icon material-icons mdui-color-blue-grey mdui-text-color-white">battery_alert</i>`, "电池电量不足", "仅剩 " + (battery.level * 100).toFixed(0) + "%", `function() {
-                                alert("电池电量不高于 20% 时会发送此通知。\\n请及时进行充电。");}`);
-                            batteryAlerted = 1;
+                            notice(`<i class="mdui-list-item-avatar mdui-icon material-icons mdui-color-blue-grey mdui-text-color-white">battery_alert</i>`, "Battery low", "Only left" + (battery.level * 100).toFixed(0) + "%", `function() {
+                                 alert("This notification will be sent when the battery power is no more than 20%.\\nPlease charge in time.");}`);
+                             batteryAlerted = 1;
                         }
                     } else {
-                        //情况 3：未在充电且电池电量高于 20%
+                        //Case 3: Not charging and battery charge is above 20%
                         gebi("batteryIcon").innerText = "battery_full";
                         gebi("batteryIcon").classList.remove("mdui-text-color-red");
                         batteryAlerted = 0;
                     }
                 }
-                //确定是否显示电池电量
+                //Determine whether to display battery level
                 if (localStorage.getItem("displayBatteryLevel") == 1) {
                     gebi("batteryLevel").style.display = "inline-block";
                     gebi("batteryLevel").innerText = (battery.level * 100).toFixed(0) + "%";
@@ -669,7 +669,7 @@
                 }
             });
         }
-        //事件：电池信息改变
+        //Event: Battery information changed
         navigator.getBattery().then(function(battery) {
             battery.onlevelchange = function() {
                 getBatteryInfo();
@@ -678,11 +678,11 @@
                 getBatteryInfo();
             };
         });
-        //获取并设置屏幕亮度
+        //Get and set screen brightness
         function getBrightness() {
             gebi("cover").style.background = "rgba(0, 0, 0, " + (1 - localStorage.getItem("brightness")) + ")";
         }
-        //获取并设置颜色反转
+        //Get and set color inversion
         function getInvert() {
             if (localStorage.getItem("invert") == 1) {
                 gebi("cover").style.backdropFilter = "invert(1)";
@@ -690,7 +690,7 @@
                 gebi("cover").style.backdropFilter = "";
             }
         }
-        //获取并设置灰度
+        //Get and set grayscale
         function getGrayscale() {
             if (localStorage.getItem("grayscale") == 1) {
                 gebi("grayscale").style.backdropFilter = "grayscale(1)";
@@ -698,24 +698,24 @@
                 gebi("grayscale").style.backdropFilter = "";
             }
         }
-        //事件：网络状态改变
+        //Event: network status changes
         window.addEventListener("offline", function() {
             gebi("WLANIcon").style.display = "none";
-            notice(`<i class="mdui-list-item-avatar mdui-icon material-icons mdui-color-blue-grey mdui-text-color-white">signal_wifi_off</i>`, "网络连接已断开", "当前处于离线状态", `function() {
-                alert("联网功能暂不可用。\\n请检查您的网络连接。");
+            notice(`<i class="mdui-list-item-avatar mdui-icon material-icons mdui-color-blue-grey mdui-text-color-white">signal_wifi_off</i>`, "The network connection has been disconnected ", "Currently offline", `function() {
+                alert("The networking function is temporarily unavailable.\\nPlease check your network connection.");
             }`);
         });
-        window.addEventListener("online", function() {
+         window.addEventListener("online", function() {
             gebi("WLANIcon").style.display = "inline-block";
-            notice(`<i class="mdui-list-item-avatar mdui-icon material-icons mdui-color-blue-grey mdui-text-color-white">network_wifi</i>`, "网络已连接", "已恢复在线状态", `function() {
-                alert("联网功能可正常使用。");
+            notice(`<i class="mdui-list-item-avatar mdui-icon material-icons mdui-color-blue-grey mdui-text-color-white">network_wifi</i>`, "The network is connected", "Restored online", `function() {
+                alert("The networking function can be used normally.");
             }`);
         });
-        //获取并设置壁纸
+        //Get and set wallpaper
         function getWallpaper() {
             document.body.style.backgroundImage = "url(" + localStorage.getItem("wallpaper") + ")";
         }
-        //函数：获取 Dock 栏设置
+        //Function: Get Dock bar settings
         function getDockBarInfo() {
             if (localStorage.getItem("transparentDockBar") == 1) {
                 gebi("dockBar").style.background = "";
@@ -723,12 +723,12 @@
                 gebi("dockBar").style.background = "rgba(255, 255, 255, .2)";
             }
         }
-        /*全屏显示与退出全屏
-        本源码来自：https://www.php.cn/article/397034.html */
+        /*Full screen display and exit full screen
+        This source code comes from: https://www.php.cn/article/397034.html */
         function requestFullScreen(element) {
-            //判断各种浏览器，找到正确的方法
+            //Judge various browsers and find the correct method
             var requestMethod = element.requestFullScreen || //W3C
-                element.webkitRequestFullScreen || //Chrome等
+                element.webkitRequestFullScreen || //Chrome, etc.
                 element.mozRequestFullScreen || //FireFox
                 element.msRequestFullScreen; //IE11
             if (requestMethod) {
@@ -740,31 +740,31 @@
                 }
             }
         }
-
+        
         function exitFull() {
-            //判断各种浏览器，找到正确的方法
+            //Judge various browsers and find the correct method
             var exitMethod = document.exitFullscreen || //W3C
-                document.mozCancelFullScreen || //Chrome等
+                document.mozCancelFullScreen || //Chrome, etc.
                 document.webkitExitFullscreen || //FireFox
-                document.webkitExitFullscreen; //IE11
-            if (exitMethod) {
-                exitMethod.call(document);
-            } else if (typeof window.ActiveXObject !== "undefined") { //for Internet Explorer
-                var wscript = new ActiveXObject("WScript.Shell");
-                if (wscript !== null) {
-                    wscript.SendKeys("{F11}");
-                }
-            }
+               document.webkitExitFullscreen; //IE11
+           if (exitMethod) {
+               exitMethod.call(document);
+           } else if (typeof window.ActiveXObject !== "undefined") { //for Internet Explorer
+               var wscript = new ActiveXObject("WScript.Shell");
+               if (wscript !== null) {
+                   wscript.SendKeys("{F11}");
+               }
+           }
         }
-        //函数：获取自定义 HTML 代码
+        //Function: Get Custom HTML code
         function getCustomHTML() {
             gebi("customHTMLDiv").innerHTML = localStorage.getItem("customHTML");
         }
-        //函数：处理更新数据
+        //Function: process update data
         function processUpdate() {
-            //判断是否为最新版本
+            //Determine whether it is the latest version
             if (versionCode < updateData.versionCode) {
-                notice(`<i class="mdui-list-item-avatar mdui-icon material-icons mdui-color-blue-grey mdui-text-color-white">system_update</i>`, "有可用的系统更新", updateData.versionName + " 版本已发布", function() {
+                notice(`<i class="mdui-list-item-avatar mdui-icon material-icons mdui-color-blue-grey mdui-text-color-white">system_update</i>`, "There is a system update available ", updateData.versionName + "Version has been released", function() {
                     if (opened == 1) {
                         switchActivity("Update.html", false, true);
                     } else {
@@ -773,21 +773,21 @@
                 });
             }
         }
-        //屏蔽右键菜单
+        //Shield right-click menu
         document.addEventListener("contextmenu", function(e) {
             e.preventDefault();
         });
-        //确定图标列表最大高度
+        //Determine the maximum height of the icon list
         function setAppList() {
             gebi("appList").style.maxHeight = document.documentElement.clientHeight - 156 + "px";
         }
-        //事件：屏幕方向改变
+        //Event: screen orientation changed
         window.addEventListener("onorientationchange" in window ? "orientationchange" : "resize", function() {
             window.setTimeout(function() {
                 setAppList();
             }, 500);
         }, false);
-        //函数：添加应用
+        //Function: Add application
         function addApp(icon, name, url, color1, color2, textColor) {
             gebi("iframe_A").style.transform = "translateY(calc(100% + 48px))";
             gebi("iframe_B").style.transform = "translateY(calc(100% + 48px))";
@@ -804,11 +804,11 @@
             gebi("installerContinue").onclick = function() {
                 apps.push(installingInfo);
                 localStorage.setItem("apps", JSON.stringify(apps));
-                toast("已添加应用。");
+                toast("App added.");
                 freshApps();
             };
         }
-        //函数：移除应用
+        //Function: remove app
         function removeApp(index) {
             gebi("iframe_A").style.transform = "translateY(calc(100% + 48px))";
             gebi("iframe_B").style.transform = "translateY(calc(100% + 48px))";
@@ -824,11 +824,11 @@
             gebi("uninstallerContinue").onclick = function() {
                 apps.splice(index, 1);
                 localStorage.setItem("apps", JSON.stringify(apps));
-                toast("已移除应用。");
+                toast("App has been removed.");
                 freshApps();
             };
         }
-        //函数：刷新应用图标
+        //Function: refresh application icon
         function freshApps() {
             if (JSON.parse(localStorage.getItem("apps")).length == 0) {
                 apps = [];
@@ -843,16 +843,16 @@
                 </div>`;
             });
         }
-        //事件：调试面板按钮被点击
+        //Event: Debug panel button is clicked
         gebi("devTools").onclick = function() {
             if (navigator.onLine) {
                 currentIframe.src = `javascript:(function () { var script = document.createElement('script'); script.src="https://cdn.jsdelivr.net/npm/eruda"; document.body.append(script); script.onload = function () { eruda.init(); } })();`;
-                toast("正在向嵌入页载入调试面板......");
-            } else {
-                toast("当前处于离线状态");
+                toast("Loading debugging panel to embedded page...");
+             } else {
+                toast("Currently offline");
             }
         };
-        //函数：获取调试面板按钮显示设置
+        //Function: Get the debug panel button display settings
         function getDevTools() {
             if (localStorage.getItem("displayDevTools") == 1 && opened == 1) {
                 gebi("devTools").style.display = "inline-block";
@@ -860,7 +860,7 @@
                 gebi("devTools").style.display = "none";
             }
         }
-        //函数：切换活动
+        //Function: switch activity
         function switchActivity(url, back, app = false) {
             if (currentIframe == gebi("iframe_A")) {
                 oldIframe = gebi("iframe_A");
@@ -915,21 +915,21 @@
             }
             currentIframe = newIframe;
         }
-        //函数：切换应用
+        //Function: switch applications
         function switchApp(url, color1, color2, textColor, back) {
             gebi("statusBar").style.background = color1;
             gebi("navBar").style.background = color2;
             gebi("statusBar").style.color = textColor;
             switchActivity(url, back, true);
-        }
-        //函数：执行自定义 HTML 代码中的 JavaScript 脚本
+         }
+        //Function: Execute JavaScript script in Custom HTML code
         function evalCustomScripts() {
             var customScripts = document.getElementById("customHTMLDiv").getElementsByTagName("script");
             for (var i = 0; i < customScripts.length; i++) {
                 eval(customScripts[i].innerHTML);
             }
-        }
-        //事件：添加应用对话框结束关闭动画
+         }
+        //Event: Add the application dialog box to end the closing animation
         gebi("appInstaller").addEventListener("closed.mdui.dialog", function() {
             gebi("iframe_A").style.transform = "translateY(0)";
             gebi("iframe_B").style.transform = "translateY(0)";
@@ -937,7 +937,7 @@
             gebi("statusBar").style.transform = "translateY(0)";
             gebi("navBar").style.transform = "translateY(0)";
         });
-        //事件：移除应用对话框结束关闭动画
+        //Event: Remove the application dialog box and end the closing animation
         gebi("appUninstaller").addEventListener("closed.mdui.dialog", function() {
             gebi("iframe_A").style.transform = "translateY(0)";
             gebi("iframe_B").style.transform = "translateY(0)";

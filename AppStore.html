@@ -7,7 +7,7 @@
     <link rel="shortcut icon" href="images/AppStore.png" type="image/x-icon">
     <link rel="stylesheet" href="mdui-v1.0.1/css/mdui.min.css">
     <script src="mdui-v1.0.1/js/mdui.min.js"></script>
-    <title>应用商店</title>
+    <title>App store</title>
     <style>
         .mdui-theme-layout-dark .mdui-list-item-avatar {
             background: #404040 !important;
@@ -71,7 +71,7 @@
 <body class="mdui-theme-primary-indigo mdui-theme-accent-pink mdui-appbar-with-toolbar">
     <div class="mdui-appbar mdui-appbar-fixed mdui-shadow-1">
         <div class="mdui-toolbar mdui-color-theme-50">
-            <a class="mdui-typo-title">应用商店</a>
+            <a class="mdui-typo-title">App Store</a>
         </div>
     </div>
     <div style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -114514;" class="mdui-valign">
@@ -81,7 +81,7 @@
     </div>
     <ul class="mdui-list mdui-center" style="max-width: 640px;" id="appList"></ul>
     <script>
-        //接入 API：执行 JavaScript 脚本
+        //Access API: Execute JavaScript script
         function postScript(script) {
             var scriptStr = script.toString();
             var postData = {
@@ -90,7 +90,7 @@
             };
             window.parent.postMessage(JSON.stringify(postData), "/");
         }
-        //接入 API：添加应用
+        //Access API: Add application
         function addApp(icon, name, url, color1, color2, textColor) {
             var postData = {
                 "type": "addApp",
@@ -103,7 +103,7 @@
             };
             window.parent.postMessage(JSON.stringify(postData), "/");
         }
-        //获取深色主题设置
+        //Get dark theme settings
         if (localStorage.getItem("darkTheme") == "true") {
             document.body.classList.add("mdui-theme-layout-dark");
             postScript(function() {
@@ -116,7 +116,7 @@
                 gebi("statusBar").style.color = "#000";
             });
         }
-        //事件：页面加载完成
+        //Event: Page loading completed
         window.onload = function() {
             var getAppData = new XMLHttpRequest();
             getAppData.onreadystatechange = function() {
@@ -132,7 +132,7 @@
                 setSource("default");
             }
         };
-        //函数：刷新应用列表
+        //Function: Refresh the application list
         function freshAppList() {
             appData.forEach(function(item, index) {
                 document.getElementById("appList").innerHTML += `<li class="mdui-list-item mdui-ripple">
@@ -147,14 +147,14 @@
                 </li>`;
             });
         }
-        //以下为实验性功能
-        function test() {
-            return "实验性功能：\n1. 设置应用商店数据源：setSource()";
+       //The following are experimental features
+       function test() {
+            return "Experimental function:\n1. Set the app store data source: setSource()";
         }
 
         function setSource(source) {
             if (source == undefined) {
-                return "用法：\n1. 设置为默认源：setSource(\"default\")\n2. 设置为本地源：setSource(\"local\")\n3. 设置为自定义源：setSource(数据源 URL)";
+                return "Usage:\n1. Set as the default source: setSource(\"default\")\n2. Set as the local source: setSource(\"local\")\n3. Set as the custom source: setSource(data source URL )";
             } else {
                 if (source == "default") {
                     localStorage.setItem("appSource", "https://bgdroid.netlify.app/apps.json");
@@ -163,10 +163,10 @@
                 } else {
                     localStorage.setItem("appSource", source);
                 }
-                return "设置完成，重新启动应用商店以生效。";
+                return "Settings completed, restart the app store to take effect.";
             }
         }
-    </script>
+     </script>
 </body>
 
 </html>

@@ -110,9 +110,9 @@
         //Function: Process update data
         function processUpdate() {
             document.getElementById("spinner").style = updateData.spinner;
-            document.getElementById("versionName").innerText = "Version Name：" + updateData.versionName;
-            document.getElementById("date").innerText = "Updated Date：" + updateData.updateDate;
-            document.getElementById("content").innerHTML = "Changes：<p>" + updateData.change + "</p>";
+            document.getElementById("versionName").innerText = "Version Name: " + updateData.versionName;
+            document.getElementById("date").innerText = "Updated Date: " + updateData.updateDate;
+            document.getElementById("content").innerHTML = "Changes: <p>" + updateData.change + "</p>";
             //Determine whether it is the latest version
             if (versionCode < updateData.versionCode) {
                 document.getElementById("title").innerText = "There is a system update available";

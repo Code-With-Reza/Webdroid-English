@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../mdui-v1.0.1/css/mdui.min.css">
     <script src="../mdui-v1.0.1/js/mdui.min.js"></script>
     <link rel="shortcut icon" href="../images/Timetable.png" type="image/x-icon">
-    <title>课程表</title>
+    <title>Course Schedule</title>
     <style>
         .mdui-list-item-content {
             word-break: break-word;
@@ -34,9 +34,9 @@
 <body class="mdui-theme-primary-indigo mdui-theme-accent-pink mdui-appbar-with-toolbar">
     <div class="mdui-appbar mdui-appbar-fixed mdui-shadow-1">
         <div class="mdui-toolbar mdui-color-theme-50">
-            <a class="mdui-typo-title">课程表</a>
+            <a class="mdui-typo-title">Course Schedule</a>
             <div class="mdui-toolbar-spacer"></div>
-            <a class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: '保存'}" onclick="javascript:save();" id="saveBtn">
+            <a class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: 'Save'}" onclick="javascript:save();" id="saveBtn">
                 <i class="mdui-icon material-icons">save</i>
             </a>
         </div>
@@ -46,14 +46,14 @@
             <table class="mdui-table">
                 <thead>
                     <tr>
-                        <th>节次/星期</th>
-                        <th>一</th>
-                        <th>二</th>
-                        <th>三</th>
-                        <th>四</th>
-                        <th>五</th>
-                        <th>六</th>
-                        <th>日</th>
+                        <th>Session/week</th>
+                        <th>One</th>
+                        <th>Two</th>
+                        <th>Three</th>
+                        <th>Four</th>
+                        <th>five</th>
+                        <th>Six</th>
+                        <th>Day</th>
                     </tr>
                 </thead>
                 <tbody id="tbody"></tbody>
@@ -61,7 +61,7 @@
         </div>
     </div>
     <script>
-        //接入 API：发送 Toast
+        //Access API: Send Toast
         function postToast(message) {
             var postData = {
                 "type": "toast",
@@ -69,7 +69,7 @@
             };
             window.parent.postMessage(JSON.stringify(postData), "*");
         }
-        //接入 API：执行 JavaScript 脚本
+        //Access API: Execute JavaScript script
         function postScript(script) {
             var scriptStr = script.toString();
             var postData = {
@@ -78,7 +78,7 @@
             };
             window.parent.postMessage(JSON.stringify(postData), "/");
         }
-        //获取深色主题设置
+        //Get dark theme settings
         if (localStorage.getItem("darkTheme") == "true") {
             document.body.classList.add("mdui-theme-layout-dark");
             postScript(function() {
@@ -91,7 +91,7 @@
                 gebi("statusBar").style.color = "#000";
             });
         }
-        //事件：页面加载完成
+        //Event: Page loading completed
         window.onload = function() {
             if (localStorage.getItem("timetable")) {
                 timetable = JSON.parse(localStorage.getItem("timetable"));
@@ -100,7 +100,7 @@
             }
             loadTimetable();
         };
-        //函数：加载课程表
+        //Function: load curriculum
         function loadTimetable() {
             courses = "";
             for (var i = 0; i < 8; i++) {
@@ -109,7 +109,7 @@
                     if (j == 0) {
                         courses += "<td>" + (i + 1) + "</td>";
                     } else {
-                        courses += "<td>" + `<div class="mdui-textfield" style="min-width: 32px;"><input class="mdui-textfield-input" type="text" id="` + (i + 1) + "_" + j + `" value="` + (timetable.length == 0 ? "" : timetable[i][j - 1]) + `"/></div>` + "</td>";
+                        courses += "<td>" + `<div class="mdui-textfield" style="min-width: 32px;"><input class="mdui-textfield-input" type="text" id="` + (i + 1) + "_" + j + `" value="` + (timetable.length == 0 ? "" : timetable[i][j - 1]) + `"/></div> ` + "</td>";
                     }
                 }
                 courses += "</tr>";
@@ -117,7 +117,7 @@
             document.getElementById("tbody").innerHTML = courses;
             displaySave();
         }
-        //函数：显示保存按钮
+        //Function: display save button
         function displaySave() {
             for (var i = 1; i < 9; i++) {
                 for (var j = 1; j < 8; j++) {
@@ -127,7 +127,7 @@
                 }
             }
         }
-        //函数：保存课程表
+        //Function: save the course schedule
         function save() {
             timetable = [];
             for (var i = 1; i < 9; i++) {
@@ -138,10 +138,10 @@
                 timetable.push(timetable_temp);
             }
             localStorage.setItem("timetable", JSON.stringify(timetable));
-            postToast("已保存");
+            postToast("Saved");
             document.getElementById("saveBtn").style.display = "none";
         }
-        //函数：复制文本
+        //Function: copy text
         function copyHandle(content) {
             let copy = (e) => {
                 e.preventDefault()
@@ -151,25 +151,23 @@
             document.addEventListener('copy', copy)
             document.execCommand("Copy");
         }
-        //以下为实验性功能
+        //The following are experimental features
         function test() {
-            return "实验性功能：\n1. 导出课程表：exportTimetable()\n2. 导入课程表（覆盖现有）：importTimetable(数据内容)\n3. 清除课程表：clearTimetable()";
+            return "Experimental features:\n1. Export curriculum: exportTimetable()\n2. Import curriculum (overwrite existing): importTimetable(data content)\n3. Clear curriculum: clearTimetable()";
         }
-
         function exportTimetable() {
             copyHandle(JSON.stringify(timetable));
             console.log(JSON.stringify(timetable));
-            return "已复制到剪贴板";
+            return "Copied to clipboard";
         }
-
         function importTimetable(data) {
             if (data == undefined) {
-                return "缺失数据内容";
+                return "Missing data content";
             } else {
                 timetable = data;
                 localStorage.setItem("timetable", JSON.stringify(timetable));
                 loadTimetable();
-                return "已导入课程表";
+                return "The curriculum has been imported";
             }
         }
 
@@ -177,7 +175,7 @@
             timetable = [];
             localStorage.setItem("timetable", JSON.stringify(timetable));
             loadTimetable();
-            return "已清除课程表";
+            return "Course schedule cleared";
         }
     </script>
 </body>

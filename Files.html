@@ -7,7 +7,7 @@
     <link rel="shortcut icon" href="images/Files.png" type="image/x-icon">
     <link rel="stylesheet" href="mdui-v1.0.1/css/mdui.min.css">
     <script src="mdui-v1.0.1/js/mdui.min.js"></script>
-    <title>文件</title>
+    <title>File</title>
     <style>
         .mdui-overlay {
             background: rgba(0, 0, 0, 0.3);
@@ -70,15 +70,15 @@
             <button class="mdui-btn mdui-btn-icon mdui-ripple" mdui-drawer="{target: '#drawer', swipe: true}">
                 <i class="mdui-icon material-icons">menu</i>
             </button>
-            <a class="mdui-typo-title">文件</a>
+            <a class="mdui-typo-title">Documents</a>
             <div class="mdui-toolbar-spacer"></div>
             <button class="mdui-btn mdui-btn-icon mdui-ripple">
                 <i class="mdui-icon material-icons">search</i>
             </button>
-            <button class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: '网格视图'}">
+            <button class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: 'Grid View'}">
                 <i class="mdui-icon material-icons">view_module</i>
             </button>
-            <button class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: '排序依据'}" mdui-menu="{target: '#sortBy'}">
+            <button class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: 'Sort by'}" mdui-menu="{target: '#sortBy'}">
                 <i class="mdui-icon material-icons">sort</i>
             </button>
             <button class="mdui-btn mdui-btn-icon mdui-ripple" mdui-menu="{target: '#menu'}">
@@ -86,22 +86,22 @@
             </button>
             <ul class="mdui-menu mdui-shadow-3" id="sortBy">
                 <li class="mdui-menu-item">
-                    <a class="mdui-ripple">按名称</a>
+                    <a class="mdui-ripple">By name</a>
                 </li>
                 <li class="mdui-menu-item">
-                    <a class="mdui-ripple">按修改日期</a>
+                    <a class="mdui-ripple">By modified date</a>
                 </li>
             </ul>
             <ul class="mdui-menu mdui-shadow-3" id="menu">
                 <li class="mdui-menu-item">
-                    <a class="mdui-ripple">新建窗口</a>
+                    <a class="mdui-ripple">New window</a>
                 </li>
                 <li class="mdui-menu-item">
-                    <a class="mdui-ripple">新建文件夹</a>
+                    <a class="mdui-ripple">New folder</a>
                 </li>
                 <li class="mdui-menu-item">
-                    <a class="mdui-ripple">显示文件大小</a>
-                </li>
+                    <a class="mdui-ripple">Show file size</a>
+               </li>
             </ul>
         </div>
     </div>
@@ -109,30 +109,30 @@
         <ul class="mdui-list">
             <li class="mdui-list-item mdui-ripple" onclick="javascript:active(0);" name="item">
                 <i class="mdui-list-item-icon mdui-icon material-icons">image</i>
-                <div class="mdui-list-item-content">图片</div>
+                <div class="mdui-list-item-content">Picture</div>
             </li>
             <li class="mdui-list-item mdui-ripple" onclick="javascript:active(1);" name="item">
                 <i class="mdui-list-item-icon mdui-icon material-icons">movie</i>
-                <div class="mdui-list-item-content">视频</div>
+                <div class="mdui-list-item-content">Video</div>
             </li>
             <li class="mdui-list-item mdui-ripple" onclick="javascript:active(2);" name="item">
                 <i class="mdui-list-item-icon mdui-icon material-icons">headset</i>
-                <div class="mdui-list-item-content">音频</div>
+                <div class="mdui-list-item-content">Audio</div>
             </li>
             <li class="mdui-list-item mdui-ripple" onclick="javascript:active(3);" name="item">
                 <i class="mdui-list-item-icon mdui-icon material-icons">access_time</i>
-                <div class="mdui-list-item-content">最近</div>
+                <div class="mdui-list-item-content">Recent</div>
             </li>
             <li class="mdui-divider"></li>
             <li class="mdui-list-item mdui-ripple" onclick="javascript:active(4);" name="item">
                 <i class="mdui-list-item-icon mdui-icon material-icons">file_download</i>
-                <div class="mdui-list-item-content">下载</div>
+                <div class="mdui-list-item-content">Download</div>
             </li>
             <li class="mdui-list-item mdui-ripple mdui-drawer-list-item-active" onclick="javascript:active(5);" name="item">
                 <i class="mdui-list-item-icon mdui-icon material-icons">smartphone</i>
                 <div class="mdui-list-item-content">
                     <div class="mdui-list-item-title">Webdroid</div>
-                    <div class="mdui-list-item-text">可用空间：114.51 GB</div>
+                    <div class="mdui-list-item-text">Available space: 2 TB</div>
                 </div>
             </li>
         </ul>
@@ -178,7 +178,7 @@
         </ul>
     </div>
     <script>
-        //接入 API：执行 JavaScript 脚本
+        //Access API: Execute JavaScript script
         function postScript(script) {
             var scriptStr = script.toString();
             var postData = {
@@ -187,7 +187,7 @@
             };
             window.parent.postMessage(JSON.stringify(postData), "/");
         }
-        //获取深色主题设置
+        //Get dark theme settings
         if (localStorage.getItem("darkTheme") == "true") {
             document.body.classList.add("mdui-theme-layout-dark");
             postScript(function() {
@@ -200,7 +200,7 @@
                 gebi("statusBar").style.color = "#000";
             });
         }
-        //函数：激活抽屉栏列表项
+        //Function: Activate drawer bar list item
         function active(index) {
             var items = document.querySelectorAll('[name="item"]');
             items.forEach(function(item) {
@@ -253,7 +253,7 @@
                 document.getElementById("content").innerHTML = `<div class="mdui-valign" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;opacity: 54%;">
                     <div style="text-align: center;width: 100%;">
                         <i class="mdui-icon material-icons" style="font-size: 64px;">folder_open</i>
-                        <p style="font-size: 18px;">无任何文件</p>
+                        <p style="font-size: 18px;">No files</p>
                     </div>
                 </div>`;
             }

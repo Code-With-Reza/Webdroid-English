@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../mdui-v1.0.1/css/mdui.min.css">
     <script src="../mdui-v1.0.1/js/mdui.min.js"></script>
     <link rel="shortcut icon" href="../images/DaysMatter.png" type="image/x-icon">
-    <title>倒数日</title>
+    <title>Countdown Day</title>
     <style>
         .mdui-card {
             margin-bottom: 32px;
@@ -62,12 +62,12 @@
 <body class="mdui-theme-primary-indigo mdui-theme-accent-pink mdui-appbar-with-toolbar">
     <div class="mdui-appbar mdui-appbar-fixed mdui-shadow-1">
         <div class="mdui-toolbar mdui-color-theme-50">
-            <a class="mdui-typo-title">倒数日</a>
+            <a class="mdui-typo-title">Countdown to Days</a>
             <div class="mdui-toolbar-spacer"></div>
-            <a class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: '刷新'}" onclick="javascript:freshList();">
+            <a class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: 'Refresh'}" onclick="javascript:freshList();">
                 <i class="mdui-icon material-icons">refresh</i>
             </a>
-            <a class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: '新建'}" mdui-dialog="{target: '#add'}">
+            <a class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: 'New'}" mdui-dialog="{target: '#add'}">
                 <i class="mdui-icon material-icons">add</i>
             </a>
         </div>
@@ -75,33 +75,33 @@
     <div class="mdui-center" style="padding: 16px;max-width: 640px;" id="list">
     </div>
     <div style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -114514;" class="mdui-valign">
-        <div style="width: 100%;text-align: center;" id="none">没有任何倒数日</div>
+        <div style="width: 100%;text-align: center;" id="none">No countdown days</div>
     </div>
     <div class="mdui-dialog" id="add">
-        <div class="mdui-dialog-title">添加倒数日</div>
+        <div class="mdui-dialog-title">Add countdown day</div>
         <div class="mdui-dialog-content">
             <form onsubmit="return false;">
                 <div class="mdui-textfield mdui-textfield-floating-label">
-                    <label class="mdui-textfield-label">标题</label>
+                    <label class="mdui-textfield-label">Title</label>
                     <input class="mdui-textfield-input" type="text" id="iTitle" />
                 </div>
                 <div class="mdui-textfield mdui-textfield-floating-label">
-                    <label class="mdui-textfield-label">内容</label>
+                    <label class="mdui-textfield-label">Content</label>
                     <input class="mdui-textfield-input" type="text" id="iContent" />
                 </div>
                 <div class="mdui-textfield mdui-textfield-floating-label">
-                    <label class="mdui-textfield-label">日期</label>
+                    <label class="mdui-textfield-label">Date</label>
                     <input class="mdui-textfield-input" type="date" id="iDate" />
                 </div>
             </form>
         </div>
         <div class="mdui-dialog-actions">
-            <button class="mdui-btn mdui-ripple" mdui-dialog-close>取消</button>
-            <button class="mdui-btn mdui-ripple" onclick="javascript:add();" id="addBtn">确认</button>
+            <button class="mdui-btn mdui-ripple" mdui-dialog-close>Cancel</button>
+            <button class="mdui-btn mdui-ripple" onclick="javascript:add();" id="addBtn">Confirm</button>
         </div>
     </div>
     <script>
-        //接入 API：执行 JavaScript 脚本
+        //Access API: Execute JavaScript script
         function postScript(script) {
             var scriptStr = script.toString();
             var postData = {
@@ -110,7 +110,7 @@
             };
             window.parent.postMessage(JSON.stringify(postData), "/");
         }
-        //接入 API：发送 Toast
+        //Access API: Send Toast
         function postToast(message) {
             var postData = {
                 "type": "toast",
@@ -118,7 +118,7 @@
             };
             window.parent.postMessage(JSON.stringify(postData), "/");
         }
-        //获取深色主题设置
+        //Get dark theme settings
         if (localStorage.getItem("darkTheme") == "true") {
             document.body.classList.add("mdui-theme-layout-dark");
             postScript(function() {
@@ -131,11 +131,11 @@
                 gebi("statusBar").style.color = "#000";
             });
         }
-        //事件：页面加载完成
+        //Event: Page loading completed
         window.onload = function() {
             freshList();
         };
-        //函数：刷新倒数日列表
+        //Function: Refresh the countdown day list
         function freshList() {
             document.getElementById("list").innerHTML = "";
             if (!localStorage.getItem("daysMatter") || localStorage.getItem("daysMatter") == "[]") {
@@ -150,7 +150,7 @@
                     document.getElementById("list").innerHTML += `
                     <div class="mdui-card mdui-shadow-0" style="opacity: ` + (days < 0 ? .5 : 1) + `;">
                         <div class="mdui-card-primary">
-                            <div class="mdui-card-primary-title mdui-text-center">` + days + ` 天</div>
+                            <div class="mdui-card-primary-title mdui-text-center">` + days + ` days</div>
                             <div class="mdui-card-primary-subtitle mdui-text-center">` + item[0] + `</div>
                         </div>
                         <div class="mdui-card-content">` + item[1] + `</div>
@@ -163,38 +163,38 @@
                 });
             }
         }
-        //函数：添加倒数日
+        //Function: add countdown day
         function add() {
             if (document.getElementById("iTitle").value == "" || document.getElementById("iContent").value == "" || document.getElementById("iDate").value == "") {
-                postToast("请将表单填充完整");
+                postToast("Please fill out the form completely");
             } else {
                 daysMatter.push([document.getElementById("iTitle").value, document.getElementById("iContent").value, document.getElementById("iDate").value]);
                 localStorage.setItem("daysMatter", JSON.stringify(daysMatter));
                 document.getElementsByClassName("mdui-overlay")[0].click();
-                postToast("已添加倒数日");
+                postToast("Countdown day has been added");
                 freshList();
             }
         }
-        //函数：移除倒数日
+        //Function: remove countdown day
         function remove(index) {
-            mdui.confirm('这将使您丢失它的全部数据，包括标题、内容和日期。', '移除此倒数日？', function() {
+            mdui.confirm('This will cause you to lose all its data, including title, content and date.', 'Remove this countdown day?', function() {
                 daysMatter.splice(index, 1);
                 localStorage.setItem("daysMatter", JSON.stringify(daysMatter));
-                postToast("已移除倒数日");
+                postToast("Countdown day has been removed");
                 freshList();
             }, undefined, {
-                "confirmText": "确认",
-                "cancelText": "取消"
+                "confirmText": "confirm",
+                "cancelText": "Cancel"
             });
         }
-        //事件：对话框打开完成
+        //Event: Dialog opening completed
         document.getElementById("add").addEventListener("opened.mdui.dialog", function() {
             document.getElementById("iTitle").value = "";
             document.getElementById("iContent").value = "";
             document.getElementById("iDate").value = "";
             document.getElementById("iTitle").focus();
         });
-        //函数：复制文本
+        //Function: copy text
         function copyHandle(content) {
             let copy = (e) => {
                 e.preventDefault()
@@ -204,25 +204,24 @@
             document.addEventListener('copy', copy)
             document.execCommand("Copy");
         }
-        //以下为实验性功能
+        //The following are experimental features
         function test() {
-            return "实验性功能：\n1. 导出倒数日：exportDaysMatter()\n2. 导入倒数日（覆盖现有）：importDaysMatter(数据内容)\n3. 清除全部倒数日：clearDaysMatter()";
+            return "Experimental features:\n1. Export countdown days: exportDaysMatter()\n2. Import countdown days (overwrite existing ones): importDaysMatter(data content)\n3. Clear all countdown days: clearDaysMatter()";
         }
-
         function exportDaysMatter() {
             copyHandle(JSON.stringify(daysMatter));
             console.log(JSON.stringify(daysMatter));
-            return "已复制到剪贴板";
+            return "Copied to clipboard";
         }
 
         function importDaysMatter(data) {
             if (data == undefined) {
-                return "缺失数据内容";
+                return "Missing data content";
             } else {
                 daysMatter = data;
                 localStorage.setItem("daysMatter", JSON.stringify(daysMatter));
                 freshList();
-                return "已导入倒数日";
+                return "Countdown days have been imported";
             }
         }
 
@@ -230,7 +229,7 @@
             daysMatter = [];
             localStorage.setItem("daysMatter", JSON.stringify(daysMatter));
             freshList();
-            return "已清除全部倒数日";
+            return "All countdown days have been cleared";
         }
     </script>
 </body>

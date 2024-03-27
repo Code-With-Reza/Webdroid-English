@@ -4573,7 +4573,7 @@
   Drawer.prototype.swipeSupport = function swipeSupport () {
       // eslint-disable-next-line @typescript-eslint/no-this-alias
       var that = this;
-      // 抽屉栏滑动手势控制
+      // 抽屉栏滑动手势Control
       var openNavEventHandler;
       var touchStartX;
       var touchStartY;

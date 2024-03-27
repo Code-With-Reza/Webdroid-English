@@ -7,56 +7,56 @@
     <link rel="shortcut icon" href="images/Settings.png" type="image/x-icon">
     <link rel="stylesheet" href="mdui-v1.0.1/css/mdui.min.css">
     <script src="mdui-v1.0.1/js/mdui.min.js"></script>
-    <title>设置</title>
+    <title>Setting</title>
 </head>
 
 <body class="mdui-theme-primary-blue-grey mdui-theme-accent-blue mdui-appbar-with-toolbar">
     <div class="mdui-appbar mdui-appbar-fixed mdui-shadow-1">
         <div class="mdui-toolbar mdui-color-theme-50">
-            <a class="mdui-typo-title">设置</a>
+            <a class="mdui-typo-title">Setting</a>
         </div>
     </div>
     <ul class="mdui-list mdui-center" style="max-width: 640px;">
-        <li class="mdui-subheader">设备</li>
+        <li class="mdui-subheader">Device</li>
         <li class="mdui-list-item mdui-ripple" onclick="javascript:switchActivity('Settings-Display.html');">
             <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-theme">brightness_medium</i>
             <div class="mdui-list-item-content">
-                <div class="mdui-list-item-title">显示</div>
-                <div class="mdui-list-item-text">亮度、壁纸、深色主题</div>
+                <div class="mdui-list-item-title">show</div>
+                <div class="mdui-list-item-text">brightness, wallpaper, dark theme</div>
             </div>
         </li>
         <li class="mdui-list-item mdui-ripple" onclick="javascript:switchActivity('Settings-Apps.html');">
             <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-theme">adb</i>
             <div class="mdui-list-item-content">
-                <div class="mdui-list-item-title">应用</div>
+                <div class="mdui-list-item-title">Apps</div>
                 <div class="mdui-list-item-text" id="appNumber"></div>
             </div>
         </li>
         <li class="mdui-list-item mdui-ripple" onclick="javascript:switchActivity('Settings-Battery.html');">
             <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-theme">battery_full</i>
             <div class="mdui-list-item-content">
-                <div class="mdui-list-item-title">电池</div>
+                <div class="mdui-list-item-title">Battery</div>
                 <div class="mdui-list-item-text" id="batteryInfo"></div>
             </div>
         </li>
-        <li class="mdui-subheader">系统</li>
+        <li class="mdui-subheader">System</li>
         <li class="mdui-list-item mdui-ripple" onclick="javascript:switchActivity('Settings-DevOptions.html');" id="devOptions">
             <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-theme">code</i>
             <div class="mdui-list-item-content">
-                <div class="mdui-list-item-title">开发者选项</div>
-                <div class="mdui-list-item-text">实验性功能</div>
+                <div class="mdui-list-item-title">Developer Options</div>
+                <div class="mdui-list-item-text">Experimental Features</div>
             </div>
         </li>
         <li class="mdui-list-item mdui-ripple" onclick="javascript:switchActivity('Settings-AboutDevice.html');">
             <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-theme">info_outline</i>
             <div class="mdui-list-item-content">
-                <div class="mdui-list-item-title">关于设备</div>
+                <div class="mdui-list-item-title">About the device</div>
                 <div class="mdui-list-item-text" id="versionName"></div>
             </div>
         </li>
     </ul>
     <script>
-        //接入 API：切换活动
+        //Access API: Switch activities
         function switchActivity(url, back = false) {
             var postData = {
                 "type": "switchActivity",
@@ -65,7 +65,7 @@
             };
             window.parent.postMessage(JSON.stringify(postData), "/");
         }
-        //获取深色主题设置
+        //Get dark theme settings
         if (localStorage.getItem("darkTheme") == "true") {
             document.body.classList.add("mdui-theme-layout-dark");
             postScript(function() {
@@ -78,23 +78,23 @@
                 gebi("statusBar").style.color = "#000";
             });
         }
-        //获取开发者选项启用状态
+        //Get developer options enabled status
         if (localStorage.getItem("devMode") != 1) {
             document.getElementById("devOptions").style.display = "none";
         }
-        //函数：获取电池信息
+        //Function: Get battery information
         function getBatteryInfo() {
             navigator.getBattery().then(function(battery) {
-                document.getElementById("batteryInfo").innerText = (battery.level * 100).toFixed(0) + "% - " + (battery.charging ? "正在充电" : "未在充电");
+                document.getElementById("batteryInfo").innerText = (battery.level * 100).toFixed(0) + "% - " + (battery.charging ? "Charging" : "Not charging");
             });
         }
-        //事件：页面加载完成
+        //Event: Page loading completed
         window.onload = function() {
             getBatteryInfo();
             document.getElementById("versionName").innerText = "Webdroid " + versionName;
-            document.getElementById("appNumber").innerText = "已安装 " + JSON.parse(localStorage.getItem("apps")).length + " 个应用";
+            document.getElementById("appNumber").innerText = "Installed " + JSON.parse(localStorage.getItem("apps")).length + " applications";
         };
-        //事件：电池信息改变
+        //Event: Battery information changed
         navigator.getBattery().then(function(battery) {
             battery.onlevelchange = function() {
                 getBatteryInfo();
@@ -103,7 +103,7 @@
                 getBatteryInfo();
             };
         });
-        //接入 API：执行 JavaScript 脚本
+        //Access API: Execute JavaScript script
         function postScript(script) {
             var scriptStr = script.toString();
             var postData = {

@@ -7,7 +7,7 @@
     <link rel="shortcut icon" href="images/Settings.png" type="image/x-icon">
     <link rel="stylesheet" href="mdui-v1.0.1/css/mdui.min.css">
     <script src="mdui-v1.0.1/js/mdui.min.js"></script>
-    <title>应用</title>
+    <title>Application</title>
     <style>
         .mdui-theme-layout-dark .mdui-list-item-avatar {
             background: #303030 !important;
@@ -69,7 +69,7 @@
             <a class="mdui-btn mdui-btn-icon mdui-ripple" onclick="javascript:postScript(function (){ gebi('navBack').click(); });">
                 <i class="mdui-icon material-icons">arrow_back</i>
             </a>
-            <a class="mdui-typo-title">应用</a>
+            <a class="mdui-typo-title">Application</a>
             <div class="mdui-toolbar-spacer"></div>
             <button class="mdui-btn mdui-btn-icon mdui-ripple" mdui-tooltip="{content: '添加'}" mdui-dialog="{target: '#addApp'}">
                 <i class="mdui-icon material-icons">add</i>
@@ -78,49 +78,49 @@
     </div>
     <ul class="mdui-list mdui-center" style="max-width: 640px;" id="appList"></ul>
     <div style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: -114514;" class="mdui-valign" id="noApp">
-        <div style="text-align: center;width: 100%;">没有已安装的应用。</div>
+        <div style="text-align: center;width: 100%;">There are no installed apps. </div>
     </div>
     <div class="mdui-dialog" id="addApp">
-        <div class="mdui-dialog-title">添加应用</div>
+        <div class="mdui-dialog-title">Add app</div>
         <div class="mdui-dialog-content">
             <form onsubmit="return false;">
                 <div class="mdui-textfield mdui-textfield-floating-label">
-                    <label class="mdui-textfield-label">图标 URL</label>
+                    <label class="mdui-textfield-label">Icon URL</label>
                     <input class="mdui-textfield-input" type="url" id="icon" />
-                    <div class="mdui-textfield-error">URL 格式错误</div>
+                    <div class="mdui-textfield-error">URL Format error</div>
                 </div>
                 <div class="mdui-textfield mdui-textfield-floating-label">
-                    <label class="mdui-textfield-label">名称</label>
+                    <label class="mdui-textfield-label">Name</label>
                     <input class="mdui-textfield-input" type="text" id="name" />
                 </div>
                 <div class="mdui-textfield mdui-textfield-floating-label">
                     <label class="mdui-textfield-label">URL</label>
                     <input class="mdui-textfield-input" type="url" id="url" />
-                    <div class="mdui-textfield-error">URL 格式错误</div>
+                    <div class="mdui-textfield-error">URL Format error</div>
                 </div>
                 <div class="mdui-row-xs-2">
                     <div class="mdui-textfield mdui-textfield-floating-label mdui-col">
-                        <label class="mdui-textfield-label">状态栏背景色</label>
+                        <label class="mdui-textfield-label">Status bar background color</label>
                         <input class="mdui-textfield-input" type="color" id="color1" />
                     </div>
                     <div class="mdui-textfield mdui-textfield-floating-label mdui-col">
-                        <label class="mdui-textfield-label">导航栏背景色</label>
+                        <label class="mdui-textfield-label">Navigation bar background color</label>
                         <input class="mdui-textfield-input" type="color" id="color2" />
                     </div>
                 </div>
                 <div class="mdui-textfield mdui-textfield-floating-label">
-                    <label class="mdui-textfield-label">状态栏文本色</label>
+                    <label class="mdui-textfield-label">Status bar text color</label>
                     <input class="mdui-textfield-input" type="color" id="textColor" />
                 </div>
             </form>
         </div>
         <div class="mdui-dialog-actions">
-            <button class="mdui-btn mdui-ripple" mdui-dialog-close>取消</button>
-            <button class="mdui-btn mdui-ripple" onclick="javascript:addTheApp();" id="addTheApp">确认</button>
+            <button class="mdui-btn mdui-ripple" mdui-dialog-close>Cancel</button>
+            <button class="mdui-btn mdui-ripple" onclick="javascript:addTheApp();" id="addTheApp">Confirm</button>
         </div>
     </div>
     <script>
-        //接入 API：切换活动
+        //Access API: Switch activities
         function switchActivity(url, back = false) {
             var postData = {
                 "type": "switchActivity",
@@ -129,7 +129,7 @@
             };
             window.parent.postMessage(JSON.stringify(postData), "/");
         }
-        //获取深色主题设置
+        //Get dark theme settings
         if (localStorage.getItem("darkTheme") == "true") {
             document.body.classList.add("mdui-theme-layout-dark");
             postScript(function() {
@@ -142,7 +142,7 @@
                 gebi("statusBar").style.color = "#000";
             });
         }
-        //接入 API：发送 Toast
+        //Access API: Send Toast
         function postToast(message) {
             var postData = {
                 "type": "toast",
@@ -150,7 +150,7 @@
             };
             window.parent.postMessage(JSON.stringify(postData), "/");
         }
-        //接入 API：执行 JavaScript 脚本
+        //Access API: Execute JavaScript script
         function postScript(script) {
             var scriptStr = script.toString();
             var postData = {
@@ -159,7 +159,7 @@
             };
             window.parent.postMessage(JSON.stringify(postData), "/");
         }
-        //接入 API：添加应用
+        //Access API: Add application
         function addApp(icon, name, url, color1, color2, textColor) {
             var postData = {
                 "type": "addApp",
@@ -172,7 +172,7 @@
             };
             window.parent.postMessage(JSON.stringify(postData), "/");
         }
-        //接入 API：移除应用
+        //Access API: Remove App
         function removeApp(index) {
             var postData = {
                 "type": "removeApp",
@@ -180,14 +180,14 @@
             };
             window.parent.postMessage(JSON.stringify(postData), "/");
         }
-        //事件：页面加载完成
+        //Event: Page loading completed
         window.onload = function() {
             freshApps();
             window.setInterval(function() {
                 freshApps();
             }, 1000);
         };
-        //函数：刷新应用列表
+        //Function: Refresh the application list
         function freshApps() {
             if (JSON.parse(localStorage.getItem("apps")).length == 0) {
                 document.getElementById("noApp").style.opacity = 1;
@@ -208,7 +208,7 @@
                 </li>`;
             });
         }
-        //事件：对话框打开完成
+        //Event: Dialog opening completed
         document.getElementById("addApp").addEventListener("opened.mdui.dialog", function() {
             document.getElementById("icon").value = "https://";
             document.getElementById("name").value = "";
@@ -222,23 +222,23 @@
             document.getElementById("textColor").focus();
             document.getElementById("icon").focus();
         });
-        //函数：添加应用
+        //Function: Add application
         function addTheApp() {
             if (document.getElementById("icon").value == "" || document.getElementById("name").value == "" || document.getElementById("url").value == "" || document.getElementById("color1").value == "" || document.getElementById("color2").value == "" || document.getElementById("textColor").value == "") {
-                postToast("请将表单填充完整");
+                postToast("Please fill out the form completely");
             } else {
                 addApp(document.getElementById("icon").value, document.getElementById("name").value, document.getElementById("url").value, document.getElementById("color1").value, document.getElementById("color2").value, document.getElementById("textColor").value);
                 new mdui.Dialog("#addApp").close();
             }
         }
-        //事件：在最后一个文本框按下回车键
+        //Event: Press the Enter key in the last text box
         document.getElementById("textColor").addEventListener("keyup", function(event) {
             event.preventDefault();
             if (event.keyCode === 13) {
                 document.getElementById('addTheApp').click();
             }
         });
-        //接入 API：切换应用
+        //Access API: switch applications
         function switchApp(url, color1, color2, textColor, back = false) {
             var postData = {
                 "type": "switchApp",
@@ -250,7 +250,7 @@
             };
             window.parent.postMessage(JSON.stringify(postData), "/");
         }
-        //函数：复制文本
+        //Function: copy text
         function copyHandle(content) {
             let copy = (e) => {
                 e.preventDefault()
@@ -260,20 +260,20 @@
             document.addEventListener('copy', copy)
             document.execCommand("Copy");
         }
-        //以下为实验性功能
-        function test() {
-            return "实验性功能：\n1. 导出全部应用：exportApps()\n2. 导入应用（覆盖现有）：importApps(数据内容)\n3. 清除全部应用：clearApps()";
-        }
+        //The following are experimental features
+         function test() {
+             return "Experimental features:\n1. Export all apps: exportApps()\n2. Import apps (overwrite existing ones): importApps(data content)\n3. Clear all apps: clearApps()";
+         }
 
         function exportApps() {
             copyHandle(JSON.stringify(apps));
             console.log(JSON.stringify(apps));
-            return "已复制到剪贴板";
+            return "Copied to clipboard";
         }
 
         function importApps(data) {
             if (data == undefined) {
-                return "缺失数据内容";
+                return "Missing data content";
             } else {
                 apps = data;
                 localStorage.setItem("apps", JSON.stringify(apps));
@@ -281,7 +281,7 @@
                 postScript(function() {
                     freshApps();
                 });
-                return "已导入应用";
+                return "Imported application";
             }
         }
 
@@ -292,7 +292,7 @@
             postScript(function() {
                 freshApps();
             });
-            return "已清除全部应用";
+            return "All apps cleared";
         }
     </script>
 </body>

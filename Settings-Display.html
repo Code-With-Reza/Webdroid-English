@@ -7,7 +7,7 @@
     <link rel="shortcut icon" href="images/Settings.png" type="image/x-icon">
     <link rel="stylesheet" href="mdui-v1.0.1/css/mdui.min.css">
     <script src="mdui-v1.0.1/js/mdui.min.js"></script>
-    <title>显示</title>
+    <title>Display</title>
     <style>
         .mdui-dialog {
             border-radius: 24px;
@@ -70,24 +70,24 @@
             <a class="mdui-btn mdui-btn-icon mdui-ripple" onclick="javascript:postScript(function (){ gebi('navBack').click(); });">
                 <i class="mdui-icon material-icons">arrow_back</i>
             </a>
-            <a class="mdui-typo-title">显示</a>
+            <a class="mdui-typo-title">show</a>
         </div>
     </div>
     <ul class="mdui-list mdui-center" style="max-width: 640px;">
         <li class="mdui-list-item mdui-ripple" mdui-dialog="{target: '#brightness'}">
             <div class="mdui-list-item-content">
-                <div class="mdui-list-item-title">亮度</div>
+                <div class="mdui-list-item-title">Brightness</div>
             </div>
         </li>
         <li class="mdui-divider mdui-m-y-0"></li>
         <li class="mdui-list-item mdui-ripple" mdui-dialog="{target: '#wallpaper'}">
             <div class="mdui-list-item-content">
-                <div class="mdui-list-item-title">壁纸</div>
+                <div class="mdui-list-item-title">Wallpaper</div>
             </div>
         </li>
         <li class="mdui-divider mdui-m-y-0"></li>
         <li class="mdui-list-item mdui-ripple">
-            <div class="mdui-list-item-content">深色主题</div>
+            <div class="mdui-list-item-content">Dark Theme</div>
             <label class="mdui-switch">
                 <input type="checkbox" onclick="javascript:darkTheme();" id="darkTheme" />
                 <i class="mdui-switch-icon mdui-text-color-theme"></i>
@@ -96,8 +96,8 @@
         <li class="mdui-divider mdui-m-y-0"></li>
         <li class="mdui-list-item mdui-ripple">
             <div class="mdui-list-item-content">
-                <div class="mdui-list-item-title">颜色反转</div>
-                <div class="mdui-list-item-text">可能会影响性能</div>
+                <div class="mdui-list-item-title">Color Inversion</div>
+                <div class="mdui-list-item-text">May affect performance</div>
             </div>
             <label class="mdui-switch">
                 <input type="checkbox" onclick="javascript:invert();" id="invert" />
@@ -107,8 +107,8 @@
         <li class="mdui-divider mdui-m-y-0"></li>
         <li class="mdui-list-item mdui-ripple">
             <div class="mdui-list-item-content">
-                <div class="mdui-list-item-title">灰度</div>
-                <div class="mdui-list-item-text">可能会影响性能</div>
+                <div class="mdui-list-item-title">Grayscale</div>
+                <div class="mdui-list-item-text">May affect performance</div>
             </div>
             <label class="mdui-switch">
                 <input type="checkbox" onclick="javascript:grayscale();" id="grayscale" />
@@ -117,7 +117,7 @@
         </li>
         <li class="mdui-divider mdui-m-y-0"></li>
         <li class="mdui-list-item mdui-ripple">
-            <div class="mdui-list-item-content">状态栏时间显示秒</div>
+            <div class="mdui-list-item-content">Status bar time displays seconds</div>
             <label class="mdui-switch">
                 <input type="checkbox" onclick="javascript:displaySeconds();" id="displaySeconds" />
                 <i class="mdui-switch-icon mdui-text-color-theme"></i>
@@ -125,7 +125,7 @@
         </li>
         <li class="mdui-divider mdui-m-y-0"></li>
         <li class="mdui-list-item mdui-ripple">
-            <div class="mdui-list-item-content">状态栏显示电池电量</div>
+            <div class="mdui-list-item-content">Status bar shows battery level</div>
             <label class="mdui-switch">
                 <input type="checkbox" onclick="javascript:displayBatteryLevel();" id="displayBatteryLevel" />
                 <i class="mdui-switch-icon mdui-text-color-theme"></i>
@@ -133,7 +133,7 @@
         </li>
         <li class="mdui-divider mdui-m-y-0"></li>
         <li class="mdui-list-item mdui-ripple">
-            <div class="mdui-list-item-content">Dock 栏背景透明</div>
+            <div class="mdui-list-item-content">Dock Bar BG Transparent</div>
             <label class="mdui-switch">
                 <input type="checkbox" onclick="javascript:transparentDockBar();" id="transparentDockBar" />
                 <i class="mdui-switch-icon mdui-text-color-theme"></i>
@@ -142,72 +142,72 @@
         <li class="mdui-divider mdui-m-y-0"></li>
         <li class="mdui-list-item mdui-ripple" onclick="javascript:rfs();">
             <div class="mdui-list-item-content">
-                <div class="mdui-list-item-title">全屏显示</div>
+                <div class="mdui-list-item-title">Enter Fullscreen</div>
             </div>
         </li>
         <li class="mdui-divider mdui-m-y-0"></li>
         <li class="mdui-list-item mdui-ripple" onclick="javascript:ef();">
             <div class="mdui-list-item-content">
-                <div class="mdui-list-item-title">退出全屏</div>
+                <div class="mdui-list-item-title">Exit Full Screen</div>
             </div>
         </li>
     </ul>
     <div class="mdui-dialog" id="brightness">
-        <div class="mdui-dialog-title">亮度</div>
+        <div class="mdui-dialog-title">Brightness</div>
         <div class="mdui-dialog-content">
             <label class="mdui-slider">
                 <input type="range" step="0.1" min="10" max="100" id="brightnessValue" value="100" />
             </label>
         </div>
         <div class="mdui-dialog-actions">
-            <button class="mdui-btn mdui-ripple" mdui-dialog-close>完成</button>
+            <button class="mdui-btn mdui-ripple" mdui-dialog-close>Finish</button>
         </div>
     </div>
     <div class="mdui-dialog" id="wallpaper">
-        <div class="mdui-dialog-title">壁纸</div>
+        <div class="mdui-dialog-title">Wallpaper</div>
         <div class="mdui-dialog-content">
             <ul class="mdui-list">
                 <li class="mdui-list-item mdui-ripple" onclick="javascript:setWallpaper('images/default_wallpaper.png');">
                     <div class="mdui-list-item-content">
-                        <div class="mdui-list-item-title" mdui-dialog-close>默认</div>
+                        <div class="mdui-list-item-title" mdui-dialog-close>Default</div>
                     </div>
                 </li>
                 <li class="mdui-list-item mdui-ripple" onclick="javascript:setWallpaper('https://api.kdcc.cn/');">
                     <div class="mdui-list-item-content">
-                        <div class="mdui-list-item-title" mdui-dialog-close>必应壁纸 API</div>
+                        <div class="mdui-list-item-title" mdui-dialog-close>Bing Wallpaper API</div>
                     </div>
                 </li>
                 <li class="mdui-list-item mdui-ripple" onclick="javascript:setWallpaper('https://t.mwm.moe/pc/');">
                     <div class="mdui-list-item-content">
-                        <div class="mdui-list-item-title" mdui-dialog-close>次元 API</div>
+                        <div class="mdui-list-item-title" mdui-dialog-close>Dimension API</div>
                     </div>
                 </li>
                 <li class="mdui-list-item mdui-ripple" mdui-dialog="{target: '#customWallpaper'}">
                     <div class="mdui-list-item-content">
-                        <div class="mdui-list-item-title" mdui-dialog-close>自定义</div>
+                        <div class="mdui-list-item-title" mdui-dialog-close>Customize</div>
                     </div>
                 </li>
             </ul>
         </div>
         <div class="mdui-dialog-actions">
-            <button class="mdui-btn mdui-ripple" mdui-dialog-close>取消</button>
+            <button class="mdui-btn mdui-ripple" mdui-dialog-close>Cancel</button>
         </div>
     </div>
     <div class="mdui-dialog" id="customWallpaper">
-        <div class="mdui-dialog-title">自定义壁纸</div>
+        <div class="mdui-dialog-title">Customize Wallpaper</div>
         <div class="mdui-dialog-content">
             <div class="mdui-textfield mdui-textfield-floating-label">
                 <label class="mdui-textfield-label">URL</label>
                 <input class="mdui-textfield-input" type="url" id="wallpaperInput" />
-                <div class="mdui-textfield-error">URL 格式错误</div>
+                <div class="mdui-textfield-error">URL wrong format</div>
             </div>
         </div>
         <div class="mdui-dialog-actions">
-            <button class="mdui-btn mdui-ripple" onclick="javascript:setWallpaper(document.getElementById('wallpaperInput').value);" id="setCustomWallpaper" mdui-dialog-close>完成</button>
+            <button class="mdui-btn mdui-ripple" onclick="javascript:setWallpaper(document.getElementById('wallpaperInput').value);" id="setCustomWallpaper" mdui-dialog-close>Finish</button>
         </div>
     </div>
     <script>
-        //接入 API：切换活动
+        //Access API: Switch activities
         function switchActivity(url, back = false) {
             var postData = {
                 "type": "switchActivity",
@@ -216,7 +216,7 @@
             };
             window.parent.postMessage(JSON.stringify(postData), "/");
         }
-        //获取深色主题设置
+        //Get dark theme settings
         if (localStorage.getItem("darkTheme") == "true") {
             document.body.classList.add("mdui-theme-layout-dark");
             document.getElementById("darkTheme").checked = true;
@@ -230,7 +230,7 @@
                 gebi("statusBar").style.color = "#000";
             });
         }
-        //函数：设置深色主题
+        //Function: Set dark theme
         function darkTheme() {
             if (localStorage.getItem("darkTheme") == "true") {
                 localStorage.setItem("darkTheme", "false");
@@ -248,11 +248,11 @@
                 });
             }
         }
-        //颜色反转设置
+        //Color inversion settings
         if (localStorage.getItem("invert") == 1) {
             document.getElementById("invert").checked = true;
         }
-        //函数：设置颜色反转
+        //Function: Set color inversion
         function invert() {
             if (localStorage.getItem("invert") == 1) {
                 localStorage.setItem("invert", 0);
@@ -266,11 +266,11 @@
                 });
             }
         }
-        //灰度设置
+        //Grayscale settings
         if (localStorage.getItem("grayscale") == 1) {
             document.getElementById("grayscale").checked = true;
         }
-        //函数：设置灰度
+        //Function: Set grayscale
         function grayscale() {
             if (localStorage.getItem("grayscale") == 1) {
                 localStorage.setItem("grayscale", 0);
@@ -284,11 +284,11 @@
                 });
             }
         }
-        //获取状态栏时间显示设置
+        //Get status bar time display settings
         if (localStorage.getItem("displaySeconds") == 1) {
             document.getElementById("displaySeconds").checked = true;
         }
-        //函数：设置状态栏时间是否显示秒
+        //Function: Set whether the status bar time displays seconds
         function displaySeconds() {
             if (localStorage.getItem("displaySeconds") == 1) {
                 localStorage.setItem("displaySeconds", 0);
@@ -296,11 +296,11 @@
                 localStorage.setItem("displaySeconds", 1);
             }
         }
-        //获取电池电量显示设置
+        //Get battery level display settings
         if (localStorage.getItem("displayBatteryLevel") == 1) {
             document.getElementById("displayBatteryLevel").checked = true;
         }
-        //函数：设置状态栏是否显示电池电量
+        //Function: Set whether the status bar displays battery power
         function displayBatteryLevel() {
             if (localStorage.getItem("displayBatteryLevel") == 1) {
                 localStorage.setItem("displayBatteryLevel", 0);
@@ -314,16 +314,16 @@
                 });
             }
         }
-        //事件：亮度滑块值改变
+        //Event: Brightness slider value changes
         document.getElementById("brightnessValue").addEventListener("input", function() {
             localStorage.setItem("brightness", (this.value / 100));
             postScript(function() {
                 getBrightness();
             });
         });
-        //获取屏幕亮度设置
+        //Get screen Brightness settings
         document.getElementById("brightnessValue").value = localStorage.getItem("brightness") * 100;
-        //接入 API：执行 JavaScript 脚本
+        //Access API: Execute JavaScript script
         function postScript(script) {
             var scriptStr = script.toString();
             var postData = {
@@ -332,7 +332,7 @@
             };
             window.parent.postMessage(JSON.stringify(postData), "/");
         }
-        //接入 API：发送 Toast
+        //Access API: Send Toast
         function postToast(message) {
             var postData = {
                 "type": "toast",
@@ -340,7 +340,7 @@
             };
             window.parent.postMessage(JSON.stringify(postData), "/");
         }
-        //接入 API：发送通知
+        //Access API: Send notification
         function postNotification(icon, title, content, clickFunc) {
             var clickFuncStr = clickFunc.toString();
             var postData = {
@@ -352,24 +352,24 @@
             };
             window.parent.postMessage(JSON.stringify(postData), "/");
         }
-        //函数：设置壁纸
+        //Function: Set Wallpaper
         function setWallpaper(url) {
             localStorage.setItem("wallpaper", url);
             postScript(function() {
                 getWallpaper();
             });
-            postToast("壁纸已设置");
+            postToast("Wallpaper has been set");
         }
-        //事件：对话框打开完成
+        //Event: Dialog opens Finish
         document.getElementById("customWallpaper").addEventListener("opened.mdui.dialog", function() {
             document.getElementById("wallpaperInput").value = "https://";
             document.getElementById("wallpaperInput").focus();
         });
-        //获取 Dock 栏设置
+        //Get Dock bar settings
         if (localStorage.getItem("transparentDockBar") == 1) {
             document.getElementById("transparentDockBar").checked = true;
         }
-        //函数：设置 Dock 栏是否透明
+        //Function: Set whether the Dock bar is transparent
         function transparentDockBar() {
             if (localStorage.getItem("transparentDockBar") == 1) {
                 localStorage.setItem("transparentDockBar", 0);
@@ -383,9 +383,9 @@
                 });
             }
         }
-        //函数：全屏显示与退出全屏
+        //Function: full screen display and exit full screen
         function rfs() {
-            postNotification(`<i class="mdui-list-item-avatar mdui-icon material-icons mdui-color-blue-grey mdui-text-color-white">fullscreen</i>`, "全屏显示", "点按此通知以请求全屏显示", function() {
+            postNotification(`<i class="mdui-list-item-avatar mdui-icon material-icons mdui-color-blue-grey mdui-text-color-white">fullscreen</i>`, "Full screen", "Tap this notification to request full screen", function() {
                 requestFullScreen(document.documentElement);
             })
         }
@@ -395,7 +395,7 @@
                 exitFull();
             });
         }
-        //事件：在文本框中按下回车键
+        //Event: Press the Enter key in the text box
         document.getElementById("wallpaperInput").addEventListener("keyup", function(event) {
             event.preventDefault();
             if (event.keyCode === 13) {

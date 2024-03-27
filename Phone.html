@@ -7,7 +7,7 @@
     <link rel="shortcut icon" href="images/Phone.png" type="image/x-icon">
     <link rel="stylesheet" href="mdui-v1.0.1/css/mdui.min.css">
     <script src="mdui-v1.0.1/js/mdui.min.js"></script>
-    <title>电话</title>
+    <title>Telephone</title>
     <style>
         .mdui-theme-layout-dark .mdui-bottom-nav {
             background: #212121 !important;
@@ -75,7 +75,7 @@
         <div class="mdui-toolbar mdui-color-theme-50">
             <i class="mdui-icon material-icons">search</i>
             <div class="mdui-textfield">
-                <input class="mdui-textfield-input" type="text" placeholder="搜素联系人" style="transform: translateY(-4px);" />
+                <input class="mdui-textfield-input" type="text" placeholder="Search for contacts" style="transform: translateY(-4px);" />
             </div>
             <div class="mdui-toolbar-spacer"></div>
             <button class="mdui-btn mdui-btn-icon mdui-ripple">
@@ -86,16 +86,16 @@
             </button>
             <ul class="mdui-menu mdui-shadow-3" id="menu">
                 <li class="mdui-menu-item">
-                    <a class="mdui-ripple">通话记录</a>
-                </li>
-                <li class="mdui-menu-item">
-                    <a class="mdui-ripple">导入/导出</a>
-                </li>
-                <li class="mdui-menu-item">
-                    <a class="mdui-ripple">新建联系人</a>
-                </li>
-                <li class="mdui-menu-item">
-                    <a class="mdui-ripple">设置</a>
+                    <a class="mdui-ripple">Call history</a>
+                 </li>
+                 <li class="mdui-menu-item">
+                     <a class="mdui-ripple">Import/Export</a>
+                 </li>
+                 <li class="mdui-menu-item">
+                     <a class="mdui-ripple">New Contact</a>
+                 </li>
+                 <li class="mdui-menu-item">
+                     <a class="mdui-ripple">Settings</a>
                 </li>
             </ul>
         </div>
@@ -107,10 +107,10 @@
                 <i class="mdui-icon material-icons" style="font-size: 80px;">call</i>
                 <i class="mdui-icon material-icons" style="font-size: 40px;">access_time</i>
                 <br><br>
-                尚未给任何联系人设定快速拨号
-            </div>
-            <br>
-            <button class="mdui-btn mdui-ripple mdui-text-color-theme-accent">收藏联系人</button>
+                No contacts have been assigned speed dial yet
+             </div>
+             <br>
+             <button class="mdui-btn mdui-ripple mdui-text-color-theme-accent">Favorite Contacts</button>
         </div>
     </div>
     <button class="mdui-fab mdui-fab-fixed mdui-ripple mdui-color-theme-accent mdui-shadow-3" style="transform: translateY(-56px);">
@@ -119,19 +119,19 @@
     <div class="mdui-bottom-nav mdui-color-theme-50 mdui-row-xs-3">
         <a class="mdui-bottom-nav-active mdui-col">
             <i class="mdui-icon material-icons">star</i>
-            <label>快速拨号</label>
+            <label>Speed Dial</label>
         </a>
         <a class="mdui-col">
             <i class="mdui-icon material-icons">access_time</i>
-            <label>通话记录</label>
+            <label>Call records</label>
         </a>
         <a class="mdui-col">
             <i class="mdui-icon material-icons">people</i>
-            <label>通讯录</label>
+            <label>Address Book</label>
         </a>
     </div>
     <script>
-        //接入 API：执行 JavaScript 脚本
+        //Access API: Execute JavaScript script
         function postScript(script) {
             var scriptStr = script.toString();
             var postData = {
@@ -140,7 +140,7 @@
             };
             window.parent.postMessage(JSON.stringify(postData), "/");
         }
-        //获取深色主题设置
+        //Get dark theme settings
         if (localStorage.getItem("darkTheme") == "true") {
             document.body.classList.add("mdui-theme-layout-dark");
             postScript(function() {
@@ -153,36 +153,36 @@
                 gebi("statusBar").style.color = "#000";
             });
         }
-        //事件：切换导航项
-        document.addEventListener("change.mdui.bottomNav", function(event) {
-            if (event._detail.index == 0) {
-                document.getElementById("content").innerHTML = `<div style="opacity: 54%;">
-                <i class="mdui-icon material-icons" style="font-size: 40px;">star</i>
-                <i class="mdui-icon material-icons" style="font-size: 80px;">call</i>
-                <i class="mdui-icon material-icons" style="font-size: 40px;">access_time</i>
-                <br><br>
-                尚未给任何联系人设定快速拨号
-            </div>
-            <br>
-            <button class="mdui-btn mdui-ripple mdui-text-color-theme-accent">收藏联系人</button>`;
-            } else if (event._detail.index == 1) {
-                document.getElementById("content").innerHTML = `<div style="opacity: 54%;">
-                <i class="mdui-icon material-icons" style="font-size: 80px;">access_time</i>
-                <br><br>
-                您没有任何通话记录
-            </div>
-            <br>
-            <button class="mdui-btn mdui-ripple mdui-text-color-theme-accent">拨打电话</button>`;
-            } else {
-                document.getElementById("content").innerHTML = `<div style="opacity: 54%;">
-                <i class="mdui-icon material-icons" style="font-size: 80px;">person</i>
-                <br><br>
-                您没有任何联系人
-            </div>
-            <br>
-            <button class="mdui-btn mdui-ripple mdui-text-color-theme-accent">添加联系人</button>`;
-            }
-        });
+       //Event: switch navigation item
+       document.addEventListener("change.mdui.bottomNav", function(event) {
+             if (event._detail.index == 0) {
+                 document.getElementById("content").innerHTML = `<div style="opacity: 54%;">
+                 <i class="mdui-icon material-icons" style="font-size: 40px;">star</i>
+                 <i class="mdui-icon material-icons" style="font-size: 80px;">call</i>
+                 <i class="mdui-icon material-icons" style="font-size: 40px;">access_time</i>
+                 <br><br>
+                 No contacts have been assigned speed dial yet
+             </div>
+             <br>
+             <button class="mdui-btn mdui-ripple mdui-text-color-theme-accent">Favorite Contact</button>`;
+             } else if (event._detail.index == 1) {
+                 document.getElementById("content").innerHTML = `<div style="opacity: 54%;">
+                 <i class="mdui-icon material-icons" style="font-size: 80px;">access_time</i>
+                 <br><br>
+                 You don't have any call history
+             </div>
+             <br>
+             <button class="mdui-btn mdui-ripple mdui-text-color-theme-accent">Make a call</button>`;
+             } else {
+                 document.getElementById("content").innerHTML = `<div style="opacity: 54%;">
+                 <i class="mdui-icon material-icons" style="font-size: 80px;">person</i>
+                 <br><br>
+                 You don't have any contacts
+             </div>
+             <br>
+             <button class="mdui-btn mdui-ripple mdui-text-color-theme-accent">Add contact</button>`;
+             }
+         });
     </script>
 </body>
 

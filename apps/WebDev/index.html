@@ -23,7 +23,7 @@
         .mdui-dialog {
             border-radius: 24px;
             -webkit-box-shadow: 0 3px 3px -2px rgba(0, 0, 0, 0.2), 0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 1px 8px 0 rgba(0, 0, 0, 0.12) !important;
-            box-shadow: 0 3px 3px -2px rgba(0, 0, 0, 0.2), 0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 1px 8px 0 rgba(0, 0, 0, 0.12) !important;
+            box-shadow: 0 3px 3px -2px rgba(0, 0, 0, 0.2), 0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 1px 8px 0 rgba(0, 0, 0, 0.12) ! important;
             -webkit-transition-duration: 0.3s;
             transition-duration: 0.3s;
             transition-timing-function: cubic-bezier(0.77, 0, 0.175, 1);
@@ -110,23 +110,23 @@
 
 <body class="mdui-theme-primary-indigo mdui-theme-accent-pink">
     <h1 class="mdui-text-color-theme-400 logo">WebDev</h1>
-    <button class="mdui-btn mdui-ripple mdui-color-theme-accent mdui-center" mdui-dialog="{target: '#newPage'}"><i class="mdui-icon material-icons" style="margin-top: -1.75px;margin-right: 8px;">add_circle</i>创建页面</button>
+    <button class="mdui-btn mdui-ripple mdui-color-theme-accent mdui-center" mdui-dialog="{target: '#newPage'}"><i class="mdui-icon material-icons" style ="margin-top: -1.75px;margin-right: 8px;">add_circle</i>Create page</button>
     <div id="pages" class="mdui-center"></div>
     <div class="mdui-dialog" id="newPage">
-        <div class="mdui-dialog-title">创建页面</div>
+        <div class="mdui-dialog-title">Create page</div>
         <div class="mdui-dialog-content">
             <div class="mdui-textfield mdui-textfield-floating-label">
-                <label class="mdui-textfield-label">页面标题</label>
+                <label class="mdui-textfield-label">Page title</label>
                 <input class="mdui-textfield-input" type="text" id="pageTitle" />
             </div>
         </div>
         <div class="mdui-dialog-actions">
-            <button class="mdui-btn mdui-ripple" mdui-dialog-close>取消</button>
-            <button class="mdui-btn mdui-ripple" onclick="javascript:createPage();" id="createBtn">创建</button>
+            <button class="mdui-btn mdui-ripple" mdui-dialog-close>Cancel</button>
+            <button class="mdui-btn mdui-ripple" onclick="javascript:createPage();" id="createBtn">Create</button>
         </div>
     </div>
     <script>
-        //接入 API：切换活动
+        //Access API: switch activities
         function switchActivity(url, back = false) {
             var postData = {
                 "type": "switchActivity",
@@ -135,7 +135,7 @@
             };
             window.parent.postMessage(JSON.stringify(postData), "/");
         }
-        //接入 API：执行 JavaScript 脚本
+        //Access API: execute JavaScript script
         function postScript(script) {
             var scriptStr = script.toString();
             var postData = {
@@ -144,7 +144,7 @@
             };
             window.parent.postMessage(JSON.stringify(postData), "/");
         }
-        //获取深色主题设置
+        //Get dark theme settings
         if (localStorage.getItem("darkTheme") == "true") {
             document.body.classList.add("mdui-theme-layout-dark");
             postScript(function() {
@@ -157,7 +157,7 @@
                 gebi("statusBar").style.color = "#000";
             });
         }
-        //接入 API：发送 Toast
+        //Access API: send Toast
         function postToast(message) {
             var postData = {
                 "type": "toast",
@@ -165,7 +165,7 @@
             };
             window.parent.postMessage(JSON.stringify(postData), "/");
         }
-        //事件：页面加载完成
+        //Event: Page loading completed
         window.onload = function() {
             if (!localStorage.getItem("webPages")) {
                 webPages = [];
@@ -175,15 +175,15 @@
             }
             freshList();
         };
-        //函数：刷新列表
+        //Function: refresh the list
         function freshList() {
             if (localStorage.getItem("webPages") == "[]") {
-                document.getElementById("pages").innerHTML = `<p style="font-size: 16px;margin-top: calc(50% - 8px);">没有任何页面</p>`;
+                document.getElementById("pages").innerHTML = `<p style="font-size: 16px;margin-top: calc(50% - 8px);">No pages</p>`;
             } else {
                 var list = "";
                 for (var i = 0; i < webPages.length; i++) {
-                    list += `<div class="mdui-ripple card-list" onclick="javascript:edit(` + i + `);">
-                             <i class="mdui-icon material-icons mdui-text-color-theme">arrow_forward</i>
+                    list += `<div class="mdui-ripple card-list" onclick="javascript:edit(` +  + `);">
+                            <i class="mdui-icon material-icons dui-text-color-theme">arrow_forward</i>
                              <div class="card-list-content">` + webPages[i][0] + `</div>
                              <div class="card-list-date">` + webPages[i][2] + `</div>
                          </div>`;
@@ -191,22 +191,22 @@
                 document.getElementById("pages").innerHTML = list;
             }
         }
-        //事件：对话框打开完成
+        //Event: The dialog box is opened and completed
         document.getElementById("newPage").addEventListener("opened.mdui.dialog", function() {
             document.getElementById("pageTitle").value = "";
             document.getElementById("pageTitle").focus();
         });
-        //事件：在文本框中按下回车键
+        //Event: Press the Enter key in the text box
         document.getElementById("pageTitle").addEventListener("keyup", function(event) {
             event.preventDefault();
             if (event.keyCode === 13) {
                 document.getElementById("createBtn").click();
             }
         });
-        //函数：创建页面
+        //Function: create page
         function createPage() {
             if (document.getElementById("pageTitle").value == "") {
-                postToast("请填写页面标题");
+                postToast("Please fill in the page title");
             } else {
                 webPages.push([document.getElementById("pageTitle").value, `<!doctype html>
 <html>
@@ -229,16 +229,16 @@
                 localStorage.setItem("webPages", JSON.stringify(webPages));
                 document.getElementsByClassName("mdui-overlay")[0].click();
                 freshList();
-                postToast("已创建页面");
+                postToast("Page created");
                 edit(webPages.length - 1);
             }
         }
-        //函数：转到编辑页面
+        //Function: Go to the edit page
         function edit(index) {
             sessionStorage.setItem("editingWebPage", index);
             switchActivity("apps/WebDev/editor.html");
         }
-        //函数：复制文本
+        //Function: copy text
         function copyHandle(content) {
             let copy = (e) => {
                 e.preventDefault()
@@ -248,25 +248,25 @@
             document.addEventListener('copy', copy)
             document.execCommand("Copy");
         }
-        //以下为实验性功能
+        //The following are experimental features
         function test() {
-            return "实验性功能：\n1. 导出全部页面：exportWebPages()\n2. 导入页面（覆盖现有）：importWebPages(数据内容)\n3. 清除全部页面：clearWebPages()";
+            return "Experimental features:\n1. Export all pages: exportWebPages()\n2. Import pages (overwrite existing): importWebPages(data content)\n3. Clear all pages: clearWebPages()";
         }
 
         function exportWebPages() {
             copyHandle(JSON.stringify(webPages));
             console.log(JSON.stringify(webPages));
-            return "已复制到剪贴板";
+            return "Copied to clipboard";
         }
 
         function importWebPages(data) {
             if (data == undefined) {
-                return "缺失数据内容";
+                return "Missing data content";
             } else {
                 webPages = data;
                 localStorage.setItem("webPages", JSON.stringify(webPages));
                 freshList();
-                return "已导入页面";
+                return "Imported page";
             }
         }
 
@@ -274,7 +274,7 @@
             webPages = [];
             localStorage.setItem("webPages", JSON.stringify(webPages));
             freshList();
-            return "已清除全部页面";
+            return "All pages cleared";
         }
     </script>
 </body>

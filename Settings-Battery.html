@@ -7,7 +7,7 @@
     <link rel="shortcut icon" href="images/Settings.png" type="image/x-icon">
     <link rel="stylesheet" href="mdui-v1.0.1/css/mdui.min.css">
     <script src="mdui-v1.0.1/js/mdui.min.js"></script>
-    <title>电池</title>
+    <title>Battery</title>
 </head>
 
 <body class="mdui-theme-primary-blue-grey mdui-theme-accent-blue mdui-appbar-with-toolbar">
@@ -16,40 +16,40 @@
             <a class="mdui-btn mdui-btn-icon mdui-ripple" onclick="javascript:postScript(function (){ gebi('navBack').click(); });">
                 <i class="mdui-icon material-icons">arrow_back</i>
             </a>
-            <a class="mdui-typo-title">电池</a>
+            <a class="mdui-typo-title">Battery</a>
         </div>
     </div>
     <ul class="mdui-list mdui-center" style="max-width: 640px;">
         <li class="mdui-list-item mdui-ripple">
             <div class="mdui-list-item-content">
-                <div class="mdui-list-item-title">电池充电状态</div>
+                <div class="mdui-list-item-title">Battery charge status</div>
                 <div class="mdui-list-item-text" id="1" onclick="javascript:copyHandle(this.innerText);"></div>
             </div>
         </li>
         <li class="mdui-divider mdui-m-y-0" id="divider1"></li>
         <li class="mdui-list-item mdui-ripple" id="chargingTime">
             <div class="mdui-list-item-content">
-                <div class="mdui-list-item-title">电池剩余充电时间</div>
+                <div class="mdui-list-item-title">Remaining battery charging time</div>
                 <div class="mdui-list-item-text" id="2" onclick="javascript:copyHandle(this.innerText);"></div>
             </div>
         </li>
         <li class="mdui-divider mdui-m-y-0" id="divider2"></li>
         <li class="mdui-list-item mdui-ripple" id="dischargingTime">
             <div class="mdui-list-item-content">
-                <div class="mdui-list-item-title">电池剩余续航时间</div>
+                <div class="mdui-list-item-title">Remaining battery life</div>
                 <div class="mdui-list-item-text" id="3" onclick="javascript:copyHandle(this.innerText);"></div>
             </div>
         </li>
         <li class="mdui-divider mdui-m-y-0"></li>
         <li class="mdui-list-item mdui-ripple">
             <div class="mdui-list-item-content">
-                <div class="mdui-list-item-title">电池电量</div>
+                <div class="mdui-list-item-title">Battery power</div>
                 <div class="mdui-list-item-text" id="4" onclick="javascript:copyHandle(this.innerText);"></div>
             </div>
         </li>
     </ul>
     <script>
-        //接入 API：切换活动
+        //Access API: Switch activities
         function switchActivity(url, back = false) {
             var postData = {
                 "type": "switchActivity",
@@ -58,7 +58,7 @@
             };
             window.parent.postMessage(JSON.stringify(postData), "/");
         }
-        //获取深色主题设置
+        //Get dark theme settings
         if (localStorage.getItem("darkTheme") == "true") {
             document.body.classList.add("mdui-theme-layout-dark");
             postScript(function() {
@@ -71,18 +71,18 @@
                 gebi("statusBar").style.color = "#000";
             });
         }
-        //函数：时间转换
+        //Function: time conversion
         function timeConvert(original) {
             var hDifference = parseInt(original / (60 * 60)).toString().padStart(2, "0");
             var mDifference = parseInt(original / 60 % 60).toString().padStart(2, "0");
             var sDifference = parseInt(original % 60).toString().padStart(2, "0");
             return hDifference + ":" + mDifference + ":" + sDifference;
         }
-        //函数：获取电池信息
+        //Function: Get battery information
         function getBatteryInfo() {
             navigator.getBattery().then(function(battery) {
-                document.getElementById("1").innerText = (battery.charging ? "正在充电" : "未在充电");
-                //自动隐藏相应的列表项
+                document.getElementById("1").innerText = (battery.charging ? "Charging" : "Not charging");
+                //Automatically hide corresponding list items
                 if (battery.chargingTime == Infinity) {
                     document.getElementById("chargingTime").style.display = "none";
                     document.getElementById("divider1").style.display = "none";
@@ -102,11 +102,11 @@
                 document.getElementById("4").innerText = (battery.level * 100).toFixed(0) + "%";
             });
         }
-        //事件：页面加载完成
+        //Event: Page loading completed
         window.onload = function() {
             getBatteryInfo();
         };
-        //事件：电池信息改变
+        //Event: Battery information changed
         navigator.getBattery().then(function(battery) {
             battery.onchargingchange = function() {
                 getBatteryInfo();
@@ -121,7 +121,7 @@
                 getBatteryInfo();
             };
         });
-        //接入 API：发送 Toast
+        //Access API: Send Toast
         function postToast(message) {
             var postData = {
                 "type": "toast",
@@ -129,7 +129,7 @@
             };
             window.parent.postMessage(JSON.stringify(postData), "/");
         }
-        //接入 API：执行 JavaScript 脚本
+        //Access API: Execute JavaScript script
         function postScript(script) {
             var scriptStr = script.toString();
             var postData = {
@@ -138,7 +138,7 @@
             };
             window.parent.postMessage(JSON.stringify(postData), "/");
         }
-        //函数：复制文本
+        //Function: copy text
         function copyHandle(content) {
             let copy = (e) => {
                 e.preventDefault()
@@ -147,7 +147,7 @@
             }
             document.addEventListener('copy', copy)
             document.execCommand("Copy");
-            postToast("已复制到剪贴板");
+            postToast("Copied to clipboard");
         }
     </script>
 </body>

@@ -4102,7 +4102,7 @@ class Drawer {
     swipeSupport() {
         // eslint-disable-next-line @typescript-eslint/no-this-alias
         const that = this;
-        // 抽屉栏滑动手势控制
+        // 抽屉栏滑动手势Control
         let openNavEventHandler;
         let touchStartX;
         let touchStartY;
